@@ -59,6 +59,9 @@
                         <TableColumn fx:id="quocGiaColumn" prefWidth="75.0" text="Quốc Gia" />
                         <TableColumn fx:id="ngayKhoiChieuColumn" prefWidth="113.0" text="Ngày Khởi Chiếu" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                </children>
             </HBox>
