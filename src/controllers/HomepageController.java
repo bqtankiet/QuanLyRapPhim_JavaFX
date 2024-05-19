@@ -14,46 +14,53 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 public class HomepageController implements Initializable {
-// FXML file: "/views/homepage/homepage.fxml"
+	public static final String FXML = "/views/homepage/homepage.fxml";
 	@FXML
 	private Button rapBtn, phimBtn;
 
 	@FXML
 	private ScrollPane scrollpane;
-	
+
 	@FXML
 	private BorderPane borderpane;
+	
+	@FXML
+	private AnchorPane mainPane;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		rapBtn.setOnAction(event -> rapBtnOnClick());
 		phimBtn.setOnAction(event -> phimBtnOnClick());
 	}
 
-	private Object rapBtnOnClick() {
-		setCurrentBtn(rapBtn);
+	public void switchMainPane(String fxml) {
 		try {
-			Pane replaceRoot = FXMLLoader.load(getClass().getResource("/views/homepage/rap.fxml"));
-			borderpane.setCenter(replaceRoot);
+			Pane replaceRoot = FXMLLoader.load(getClass().getResource(fxml));
+			mainPane.getChildren().clear();
+			mainPane.getChildren().add(replaceRoot);
+	        AnchorPane.setTopAnchor(replaceRoot, 0.0);
+	        AnchorPane.setBottomAnchor(replaceRoot, 0.0);
+	        AnchorPane.setLeftAnchor(replaceRoot, 0.0);
+	        AnchorPane.setRightAnchor(replaceRoot, 0.0);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private Object rapBtnOnClick() {
+		setCurrentBtn(rapBtn);
+		switchMainPane("/views/rap/rap.fxml");
 		return null;
 	}
 
 	private Object phimBtnOnClick() {
 		setCurrentBtn(phimBtn);
-		try {
-			Pane replaceRoot = FXMLLoader.load(getClass().getResource("/views/homepage/phim.fxml"));
-			borderpane.setCenter(replaceRoot);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		switchMainPane("/views/phim/phim.fxml");
 		return null;
 	}
-	
+
 	private Button currentButton;
+
 	private void setCurrentBtn(Button button) {
 		Button prevButton = currentButton;
 		currentButton = button;

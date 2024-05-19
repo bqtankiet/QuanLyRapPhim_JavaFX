@@ -1,0 +1,6 @@
+.date-picker .text-field {
+    -fx-prompt-text-fill: #ff6666; /*error text color */
+}
+.text-field {
+    -fx-prompt-text-fill: #ff6666; /*error text color */
+}

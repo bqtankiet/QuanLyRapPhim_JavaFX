@@ -1,11 +1,8 @@
 package utils;
 
-import java.io.IOException;
 import java.util.HashMap;
 
-import javafx.beans.property.ObjectProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
