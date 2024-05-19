@@ -46,17 +46,15 @@ public class HomepageController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-
-	private Object rapBtnOnClick() {
+	
+	private void rapBtnOnClick() {
 		setCurrentBtn(rapBtn);
 		switchMainPane("/views/rap/rap.fxml");
-		return null;
 	}
-
-	private Object phimBtnOnClick() {
+	
+	private void phimBtnOnClick() {
 		setCurrentBtn(phimBtn);
 		switchMainPane("/views/phim/phim.fxml");
-		return null;
 	}
 
 	private Button currentButton;

@@ -61,9 +61,9 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <AnchorPane fx:id="thongTinPane" HBox.hgrow="ALWAYS">
+                  <AnchorPane fx:id="thongTinPane" style="-fx-background-color: lightgray;" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets bottom="25.0" left="25.0" right="25.0" />
+                        <Insets left="25.0" right="25.0" />
                      </HBox.margin>
                      <children>
                         <VBox prefHeight="200.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -89,7 +89,7 @@
                               </VBox>
                               <HBox alignment="CENTER">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Thêm phòng chiếu" />
+                                    <Button fx:id="themPhongChieuBtn" mnemonicParsing="false" text="Thêm phòng chiếu" />
                                  </children>
                                  <VBox.margin>
                                     <Insets bottom="15.0" top="15.0" />
@@ -113,6 +113,9 @@
                            </children>
                         </HBox>
                      </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
                   </AnchorPane>
                </children>
             </HBox>

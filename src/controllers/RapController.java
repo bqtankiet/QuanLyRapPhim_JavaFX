@@ -15,8 +15,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import models.Rap;
 import models.RapItem;
+import utils.PaneController;
 
 public class RapController implements Initializable {
+	public static final String FXML = "/views/rap/rap.fxml";
+	
 	@FXML
 	private TableView<RapItem> tableView;
 
@@ -46,6 +49,9 @@ public class RapController implements Initializable {
 
 	@FXML
 	private Button themRapBtn;
+	
+	@FXML
+	private Button themPhongChieuBtn;
 
 	private ObservableList<RapItem> data = FXCollections.observableArrayList();
 
@@ -53,12 +59,33 @@ public class RapController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		thongTinPane.setVisible(false);
 		tableView.setOnMouseClicked(event -> rowClicked());
+		themRapBtn.setOnAction(event -> themRapBtnAction());
+		themPhongChieuBtn.setOnAction(event -> themPhongChieuBtnAction());
 		setupTableView();
 		loadData();
 	}
 
+	private Object themPhongChieuBtnAction() {
+		PaneController.getInstance().replacePane(rootPane, SoDoGheNgoiController.FXML);
+		return null;
+	}
+
+	private Object themRapBtnAction() {
+		Rap rap = new Rap("NULL", "NULL");
+		tenRapField.setText(rap.getTenRap());
+		diaChiField.setText(rap.getDiaChi());
+		data.add(rap.getRapItem());
+		tableView.setItems(data);
+		tableView.getSelectionModel().select(data.size()-1);
+		tableView.requestFocus();
+		tableView.getFocusModel().focus(data.size()-1);
+		tableView.scrollTo(data.size()-1);
+		return null;
+	}
+
 	private Object rowClicked() {
 		RapItem clickedRap = tableView.getSelectionModel().getSelectedItem();
+		if(clickedRap == null) return null;
 		tenRapField.setText(clickedRap.getTenRap());
 		diaChiField.setText(clickedRap.getDiaChi());
 		return null;
