@@ -1,9 +1,12 @@
 package models;
 
+import java.util.List;
+
 public class Rap {
 
 	private String tenRap;
 	private String diaChi;
+	private List<PhongChieu> dsPhongChieu;
 
 	public Rap(String tenRap, String diaChi) {
 		super();

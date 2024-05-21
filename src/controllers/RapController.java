@@ -62,15 +62,13 @@ public class RapController implements Initializable {
 		themRapBtn.setOnAction(event -> themRapBtnAction());
 		themPhongChieuBtn.setOnAction(event -> themPhongChieuBtnAction());
 		setupTableView();
-		loadData();
 	}
 
-	private Object themPhongChieuBtnAction() {
+	private void themPhongChieuBtnAction() {
 		PaneController.getInstance().replacePane(rootPane, SoDoGheNgoiController.FXML);
-		return null;
 	}
 
-	private Object themRapBtnAction() {
+	private void themRapBtnAction() {
 		Rap rap = new Rap("NULL", "NULL");
 		tenRapField.setText(rap.getTenRap());
 		diaChiField.setText(rap.getDiaChi());
@@ -80,15 +78,13 @@ public class RapController implements Initializable {
 		tableView.requestFocus();
 		tableView.getFocusModel().focus(data.size()-1);
 		tableView.scrollTo(data.size()-1);
-		return null;
 	}
 
-	private Object rowClicked() {
+	private void rowClicked() {
 		RapItem clickedRap = tableView.getSelectionModel().getSelectedItem();
-		if(clickedRap == null) return null;
+		if(clickedRap == null) return;
 		tenRapField.setText(clickedRap.getTenRap());
 		diaChiField.setText(clickedRap.getDiaChi());
-		return null;
 	}
 
 	private void loadData() {
@@ -109,6 +105,7 @@ public class RapController implements Initializable {
 				thongTinPane.setVisible(false);
 			}
 		});
+		loadData();
 	}
 
 }
