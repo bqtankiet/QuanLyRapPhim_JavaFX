@@ -16,7 +16,7 @@ import javafx.scene.layout.Pane;
 public class HomepageController implements Initializable {
 	public static final String FXML = "/views/homepage/homepage.fxml";
 	@FXML
-	private Button rapBtn, phimBtn;
+	private Button rapBtn, phimBtn, suatChieuBtn, giaVeBtn, khuyenmaiBtn;
 
 	@FXML
 	private ScrollPane scrollpane;
@@ -31,6 +31,9 @@ public class HomepageController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		rapBtn.setOnAction(event -> rapBtnOnClick());
 		phimBtn.setOnAction(event -> phimBtnOnClick());
+		suatChieuBtn.setOnAction(event -> suatChieuBtnOnClick());
+		giaVeBtn.setOnAction(event -> giaVeBtnOnClick());
+		khuyenmaiBtn.setOnAction(event -> khuyenmaiBtnOnClick());
 	}
 
 	public void switchMainPane(String fxml) {
@@ -47,14 +50,30 @@ public class HomepageController implements Initializable {
 		}
 	}
 	
+
+	private void khuyenmaiBtnOnClick() {
+		setCurrentBtn(khuyenmaiBtn);
+		switchMainPane(KhuyenMaiController.FXML);
+	}
+	
+	private void giaVeBtnOnClick() {
+		setCurrentBtn(giaVeBtn);
+		switchMainPane(GiaVeController.FXML);
+	}
+
+	private void suatChieuBtnOnClick() {
+		setCurrentBtn(suatChieuBtn);
+		switchMainPane(SuatChieuController.FXML);
+	}
+	
 	private void rapBtnOnClick() {
 		setCurrentBtn(rapBtn);
-		switchMainPane("/views/rap/rap.fxml");
+		switchMainPane(RapController.FXML);
 	}
 	
 	private void phimBtnOnClick() {
 		setCurrentBtn(phimBtn);
-		switchMainPane("/views/phim/phim.fxml");
+		switchMainPane(PhimController.FXML);
 	}
 
 	private Button currentButton;

@@ -17,7 +17,7 @@ public class SoDoGheNgoiController implements Initializable {
 
 	@FXML
 	private AnchorPane rootPane;
-	
+
 	@FXML
 	private GridPane gridpane;
 
@@ -32,10 +32,10 @@ public class SoDoGheNgoiController implements Initializable {
 
 	@FXML
 	private Button taoSoDoGheBtn;
-	
+
 	@FXML
 	private Button huyBtn;
-	
+
 	@FXML
 	private Button luuBtn;
 
@@ -72,7 +72,7 @@ public class SoDoGheNgoiController implements Initializable {
 				Button seatButton = new Button();
 				seatButton.setMinSize(40, 40);
 				seatButton.setMaxSize(40, 40);
-				
+
 				// Set button text to row letter and column number
 				String seatLabel = (char) ('A' + row) + String.valueOf(col + 1);
 				seatButton.setText(seatLabel);

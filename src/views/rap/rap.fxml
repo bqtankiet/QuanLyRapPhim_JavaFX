@@ -99,7 +99,7 @@
                                 <columns>
                                   <TableColumn prefWidth="75.0" text="Tên phòng" />
                                   <TableColumn prefWidth="75.0" text="Loại phòng" />
-                                    <TableColumn prefWidth="75.0" text="Dãy x Hàng" />
+                                    <TableColumn prefWidth="75.0" text="Số ghế" />
                                 </columns>
                                  <columnResizePolicy>
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
