@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public final class SceneController {
@@ -56,6 +57,16 @@ public final class SceneController {
 //			primaryStage.setTitle(replaceRoot.getUserData().toString());
 	}
 
+	public void addPane(Pane pane) {
+		StackPane root = (StackPane) primarySence.getRoot();
+		root.getChildren().add(pane);
+	}
+	
+	public void removePane(Pane pane) {
+		StackPane root = (StackPane) primarySence.getRoot();
+		root.getChildren().remove(pane);
+	}
+	
 	public void tryReplaceScene(String scene) {
 		try {
 			replaceScene(scene);

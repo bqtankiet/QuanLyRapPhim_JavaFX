@@ -27,4 +27,12 @@ public class Rap {
 		this.diaChi = diaChi;
 	}
 
+	public RapItem getRapItem() {
+		return new RapItem(this);
+	}
+	
+	public static Rap getSampleRap() {
+		return new Rap("Rap CGV VinCom Thu Duc", "Linh Trung, Thu Duc");
+	}
+	
 }

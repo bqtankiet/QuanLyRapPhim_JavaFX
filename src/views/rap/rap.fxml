@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootPane" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RapController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../phim/phim_style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -51,14 +50,73 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
                <children>
-                  <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                  <TableView fx:id="tableView" prefHeight="200.0" HBox.hgrow="ALWAYS">
                      <columns>
-                        <TableColumn fx:id="tenRapColumn" prefWidth="150.0" text="Tên rạp" />
+                        <TableColumn fx:id="tenRapColumn" prefWidth="200.0" text="Tên rạp" />
                         <TableColumn fx:id="diaChiColumn" prefWidth="300.0" text="Địa chỉ" />
-                        <TableColumn fx:id="soPhongColumn" prefWidth="75.0" text="Số phòng" />
-                        <TableColumn fx:id="trangThaiColumn" prefWidth="75.0" text="Trạng thái" />
+                        <TableColumn fx:id="soPhongColumn" prefWidth="100.0" text="Số phòng" />
+                        <TableColumn fx:id="trangThaiColumn" prefWidth="150.0" text="Trạng thái" />
                      </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
+                  <AnchorPane fx:id="thongTinPane" style="-fx-background-color: lightgray;" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="25.0" right="25.0" />
+                     </HBox.margin>
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="300.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Label text="Thông tin chi tiết" />
+                              <VBox prefWidth="200.0">
+                                 <children>
+                                    <Label text="Tên rạp" />
+                                    <TextField fx:id="tenRapField" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox prefWidth="200.0">
+                                 <children>
+                                    <Label text="Địa chỉ" />
+                                    <TextField fx:id="diaChiField" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <Button fx:id="themPhongChieuBtn" mnemonicParsing="false" text="Thêm phòng chiếu" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="15.0" top="15.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <TableView prefHeight="200.0" VBox.vgrow="ALWAYS">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Tên phòng" />
+                                  <TableColumn prefWidth="75.0" text="Loại phòng" />
+                                    <TableColumn prefWidth="75.0" text="Số ghế" />
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </VBox>
+                        <HBox alignment="BOTTOM_RIGHT" layoutX="-16.0" layoutY="224.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Button mnemonicParsing="false" text="Lưu" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </AnchorPane>
                </children>
             </HBox>
          </children>
