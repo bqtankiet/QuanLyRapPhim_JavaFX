@@ -12,8 +12,7 @@ public class PaneController {
 
 	private Pane rootPane;
 	private static PaneController instance = null;
-	private final HashMap<String, Parent> paneMap = new HashMap<>();
-	private final HashMap<String, Object> controllerMap = new HashMap<>();
+	public final HashMap<String, Parent> paneMap = new HashMap<>();
 
 	private PaneController() {
 	}

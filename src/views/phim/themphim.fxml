@@ -78,17 +78,17 @@
                                           <Label text="Thể loại" GridPane.rowIndex="2" />
                                           <Label text="Tóm tắt phim" GridPane.rowIndex="8" GridPane.valignment="TOP" />
                                           <TextField fx:id="tenPhimField" GridPane.columnIndex="1" />
-                                          <TextField fx:id="daoDienField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                                          <TextField fx:id="thoiLuongField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                          <TextArea fx:id="moTaTextArea" prefWidth="300.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                                          <Label text="Diễn viên" GridPane.rowIndex="5" />
-                                          <TextField fx:id="dienVienField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                                          <Label text="Ngày khởi chiếu" GridPane.rowIndex="6" />
-                                          <DatePicker fx:id="ngayKhoiChieuDatepicker" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                                          <Label text="Giới hạn độ tuổi" GridPane.rowIndex="7" />
-                                          <TextField fx:id="doTuoiField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                                           <TextField fx:id="quocGiaField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                           <TextField fx:id="theLoaiField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <TextField fx:id="thoiLuongField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <TextField fx:id="daoDienField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                                          <TextField fx:id="dienVienField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                                          <DatePicker fx:id="ngayKhoiChieuDatepicker" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                                          <TextField fx:id="doTuoiField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                                          <TextArea fx:id="moTaTextArea" prefWidth="300.0" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                                          <Label text="Diễn viên" GridPane.rowIndex="5" />
+                                          <Label text="Ngày khởi chiếu" GridPane.rowIndex="6" />
+                                          <Label text="Giới hạn độ tuổi" GridPane.rowIndex="7" />
                                        </children>
                                     </GridPane>
                                     <GridPane hgap="10.0" vgap="10.0">
@@ -103,7 +103,7 @@
                                        <children>
                                           <Label text="Hình ảnh" />
                                           <Button fx:id="chonFileBtn" mnemonicParsing="false" text="Chọn file" GridPane.columnIndex="1" />
-                                          <ImageView fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <ImageView fx:id="phimImageView" fitHeight="300.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <viewport>
                                                 <Rectangle2D />
                                              </viewport>

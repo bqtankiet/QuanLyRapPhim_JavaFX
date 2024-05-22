@@ -99,6 +99,7 @@ public class RapController implements Initializable {
 		ObservableList<RapItem> temp = FXCollections.observableArrayList();
 		for (RapItem rapItem : dataRap) {
 			temp.add(rapItem.getRap().createRapItem());
+			System.out.println(rapItem.getRap().getTenRap());
 		}
 		tableView.getItems().clear();
 		dataRap.clear();

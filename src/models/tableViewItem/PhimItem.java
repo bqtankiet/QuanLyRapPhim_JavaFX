@@ -1,6 +1,11 @@
 package models.tableViewItem;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,7 +25,16 @@ public class PhimItem {
 
 		public PhimItem(Phim phim) {
 			super();
-			Image image = new Image(new ByteArrayInputStream(phim.getHinhAnh()));
+//			byte[] bytes = null;
+//			try {
+//				Path path = Paths.get(phim.getHinhAnh());
+//				bytes = Files.readAllBytes(path);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			Image image = new Image(new ByteArrayInputStream(bytes));
+			File file = new File("resource/images/mai.jpg");
+			Image image = new Image(file.toURI().toString());
 			this.hinhAnh = new ImageView(image);
 			hinhAnh.setFitWidth(100);
 			hinhAnh.setFitHeight(150);

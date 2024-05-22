@@ -1,10 +1,5 @@
 package models;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import models.tableViewItem.PhimItem;
 
 public class Phim {
@@ -17,7 +12,7 @@ public class Phim {
 	private String quocGia;
 	private String ngayKhoiChieu;
 	private int doTuoi;
-	private byte[] hinhAnh;
+	private String hinhAnh;
 	private String moTa;
 	
 	private Phim(PhimBuilder builder) {
@@ -90,10 +85,10 @@ public class Phim {
 	public void setDoTuoi(int doTuoi) {
 		this.doTuoi = doTuoi;
 	}
-	public byte[] getHinhAnh() {
+	public String getHinhAnh() {
 		return hinhAnh;
 	}
-	public void setHinhAnh(byte[] hinhAnh) {
+	public void setHinhAnh(String hinhAnh) {
 		this.hinhAnh = hinhAnh;
 	}
 	public String getMoTa() {
@@ -104,9 +99,16 @@ public class Phim {
 	}
 	// ########## END GETTER, SETTER ############
 
+	 @Override
+		public String toString() {
+			return "Phim [tenPhim=" + tenPhim + ", daoDien=" + daoDien + ", dienVien=" + dienVien + ", theLoai="
+					+ theLoai + ", thoiLuong=" + thoiLuong + ", quocGia=" + quocGia + ", ngayKhoiChieu=" + ngayKhoiChieu
+					+ ", doTuoi=" + doTuoi + ", hinhAnh=" + hinhAnh + ", moTa=" + moTa + "]";
+		}
+	
 	 // PhimBuilder class
     public static class PhimBuilder {
-        private String tenPhim;
+		private String tenPhim;
         private String daoDien;
         private String dienVien;
         private String theLoai;
@@ -114,7 +116,7 @@ public class Phim {
         private String quocGia;
         private String ngayKhoiChieu;
         private int doTuoi;
-        private byte[] hinhAnh;
+        private String hinhAnh;
         private String moTa;
 
         public PhimBuilder tenPhim(String tenPhim) {
@@ -157,7 +159,7 @@ public class Phim {
             return this;
         }
 
-        public PhimBuilder hinhAnh(byte[] hinhAnh) {
+        public PhimBuilder hinhAnh(String hinhAnh) {
             this.hinhAnh = hinhAnh;
             return this;
         }
