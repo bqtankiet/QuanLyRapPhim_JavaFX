@@ -12,7 +12,8 @@ public class PaneController {
 
 	private Pane rootPane;
 	private static PaneController instance = null;
-	private final HashMap<String, Pane> paneMap = new HashMap<>();
+	private final HashMap<String, Parent> paneMap = new HashMap<>();
+	private final HashMap<String, Object> controllerMap = new HashMap<>();
 
 	private PaneController() {
 	}
@@ -28,12 +29,13 @@ public class PaneController {
 		return instance;
 	}
 
-	public void replacePane(Pane current, String other) {
-		Pane pane = paneMap.get(other);
+	public void replacePane(Parent current, String other) {
+		Parent pane = paneMap.get(other);
 //		System.out.println(paneMap);
 		try {
 			if (pane == null) {
 				pane = FXMLLoader.load(getClass().getResource(other));
+//				pane = loader.load();
 				paneMap.put(other, pane);
 			}
 //			System.out.println(current.getParent());

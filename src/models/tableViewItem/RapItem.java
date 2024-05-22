@@ -41,10 +41,12 @@ public class RapItem {
 
 	public void setTenRap(SimpleStringProperty tenRap) {
 		this.tenRap = tenRap;
+		rap.setTenRap(tenRap.get());
 	}
 
 	public void setDiaChi(SimpleStringProperty diaChi) {
 		this.diaChi = diaChi;
+		rap.setDiaChi(diaChi.get());
 	}
 
 	public void setSoPhong(SimpleStringProperty soPhong) {

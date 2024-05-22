@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import database.RapList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,13 +17,24 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import models.PhongChieu;
 import models.Rap;
+import models.enums.LoaiPhong;
 import models.tableViewItem.PhongChieuItem;
 import models.tableViewItem.RapItem;
+import storage.StorageRap;
 import utils.AlertDialog;
 import utils.PaneController;
+import utils.SceneController;
 
 public class RapController implements Initializable {
 	public static final String FXML = "/views/rap/rap.fxml";
+	private static RapController instance;
+	
+	public static RapController getInstance() {
+        if (instance == null) {
+            instance = new RapController();
+        }
+        return instance;
+    }
 
 	@FXML
 	private TableView<RapItem> tableView;
@@ -62,6 +72,7 @@ public class RapController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		instance = this;
 		thongTinPane.setVisible(false);
 //		tableView.setOnMouseClicked(event -> tableviewRowOnClick());
 		themRapBtn.setOnAction(event -> themRapBtnAction());
@@ -78,37 +89,56 @@ public class RapController implements Initializable {
 	}
 
 	private void themPhongChieuBtnAction() {
-		PaneController.getInstance().replacePane(rootPane, SoDoGheNgoiController.FXML);
+//		PaneController.getInstance().replacePane(rootPane, SoDoGheNgoiController.FXML);
+		PaneController.getInstance().addPane(PaneController.getInstance().getRootPane(), SoDoGheNgoiController.FXML);
+	}
+	
+	public void themPhongChieu(PhongChieu phongChieu) {
+		Rap rap = tableView.getSelectionModel().getSelectedItem().getRap();
+		rap.themPhongChieu(phongChieu);
+		ObservableList<RapItem> temp = FXCollections.observableArrayList();
+		for (RapItem rapItem : dataRap) {
+			temp.add(rapItem.getRap().createRapItem());
+		}
+		tableView.getItems().clear();
+		dataRap.clear();
+		dataRap.setAll(temp);
+		tableView.setItems(dataRap);
 	}
 
+	private boolean hasChange() {
+		return !prevDataRap.equals(dataRap);
+	}
+	
 	private void saveBtnOnAction() {
-		if(prevDataRap.equals(dataRap)) return; //do nothing
-		RapList.setAllFromObserableList(dataRap);
-		System.out.println(RapList.listRap.size());
-		AlertDialog.showConfirmAlert("Lưu thành công");
+		if (!hasChange())
+			return; // do nothing
+		StorageRap.setAllFromObserableList(dataRap);
+		for (RapItem rapItem : dataRap) {
+			rapItem.getRap().setTenRap(rapItem.tenRap.get());
+			rapItem.getRap().setDiaChi(rapItem.diaChi.get());
+		}
 		updatePrevRapData();
+		AlertDialog.showConfirmAlert("Lưu thành công");
+		System.out.println(StorageRap.data.toString());
 	}
 
 	private void themRapBtnAction() {
+		for (RapItem item : dataRap) {
+			tenRapField.textProperty().unbindBidirectional(item.tenRap);
+			diaChiField.textProperty().unbindBidirectional(item.diaChi);
+		}
 		// kiem tra thay doi
-		boolean hasChange = !prevDataRap.equals(dataRap);
-		if (hasChange) {
+		if (hasChange()) {
 			AlertDialog.showConfirmAlert("Hãy lưu lại thay đổi trước khi thêm rạp mới");
 			return;
 		}
 		// tao rap moi
 		Rap rap = new Rap("NULL", "NULL");
-		// clear bang chi tiet thong tin
-//		phongTable.getItems().clear();
-//		tenRapField.setText(rap.getTenRap());
-//		diaChiField.setText(rap.getDiaChi());
 		// them rap moi vao tableview
 		dataRap.add(rap.createRapItem());
 		tableView.setItems(dataRap);
-		for (RapItem item : dataRap) {
-			tenRapField.textProperty().unbindBidirectional(item.tenRap);
-			diaChiField.textProperty().unbindBidirectional(item.diaChi);
-		}
+		tableView.getSelectionModel().clearSelection();
 		tableView.getSelectionModel().select(dataRap.size() - 1);
 		tableView.requestFocus();
 		tableView.getFocusModel().focus(dataRap.size() - 1);
@@ -130,11 +160,11 @@ public class RapController implements Initializable {
 	}
 
 	private void loadData() {
-		for (Rap rap : RapList.getAll()) {
+		for (Rap rap : StorageRap.getAll()) {
 			dataRap.add(rap.createRapItem());
 		}
-		updatePrevRapData();
 		tableView.setItems(dataRap);
+		updatePrevRapData();
 	}
 
 	private void updatePrevRapData() {
@@ -167,6 +197,10 @@ public class RapController implements Initializable {
 				phongTable.getItems().clear();
 			}
 			if (newSelection != null) {
+				for (RapItem item : dataRap) {
+					tenRapField.textProperty().unbindBidirectional(item.tenRap);
+					diaChiField.textProperty().unbindBidirectional(item.diaChi);
+				}
 				// hien thi bang thong tin chi tiet
 				thongTinPane.setVisible(true);
 				// rang buoc cot du lieu vs text field
