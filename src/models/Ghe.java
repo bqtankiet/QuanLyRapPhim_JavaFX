@@ -46,4 +46,14 @@ public class Ghe {
 		return ""+hang+day;
 	}
 	
+	 @Override
+	    public boolean equals(Object o) {
+	        if (this == o) return true;
+	        if (o == null || getClass() != o.getClass()) return false;
+	        Ghe ghe = (Ghe) o;
+	        return hang == ghe.hang &&
+	                day == ghe.day &&
+	                loaiGhe == ghe.loaiGhe;
+	    }
+	
 }

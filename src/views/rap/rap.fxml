@@ -22,8 +22,11 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <HBox alignment="CENTER_LEFT" layoutX="352.0" layoutY="5.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0" />
-                  <Button fx:id="themRapBtn" layoutX="559.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Thêm rạp" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <HBox alignment="CENTER_LEFT" layoutX="352.0" layoutY="5.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Lưu" />
+                        <Button fx:id="themRapBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" text="Thêm rạp" />
+                     </children></HBox>
                </children>
                <VBox.margin>
                   <Insets top="15.0" />
@@ -105,14 +108,6 @@
                                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                  </columnResizePolicy>
                               </TableView>
-                              <HBox alignment="BOTTOM_RIGHT" spacing="15.0">
-                                 <children>
-                                    <Button mnemonicParsing="false" text="Lưu" />
-                                 </children>
-                                 <padding>
-                                    <Insets bottom="10.0" left="10.0" top="15.0" />
-                                 </padding>
-                              </HBox>
                            </children>
                         </VBox>
                      </children>

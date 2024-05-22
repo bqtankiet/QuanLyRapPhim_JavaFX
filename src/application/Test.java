@@ -1,87 +1,74 @@
 package application;
-
 import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Test extends Application {
-
-    private GridPane gridPane;
-
     @Override
     public void start(Stage primaryStage) {
-        // Create UI elements
-        Label rowsLabel = new Label("Rows:");
-        TextField rowsField = new TextField();
-        rowsField.setPromptText("Enter number of rows");
+        TableView<Person> tableView = new TableView<>();
+        ObservableList<Person> data = FXCollections.observableArrayList(
+                new Person("John Doe"),
+                new Person("Jane Doe")
+        );
 
-        Label columnsLabel = new Label("Columns:");
-        TextField columnsField = new TextField();
-        columnsField.setPromptText("Enter number of columns");
+        TableColumn<Person, String> nameColumn = new TableColumn<>("Name");
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 
-        Button okButton = new Button("OK");
-        
-        // Set up the grid pane for seats
-        gridPane = new GridPane();
-        gridPane.setHgap(8);
-        gridPane.setVgap(8);
-        gridPane.setAlignment(Pos.CENTER);
-        gridPane.setStyle("-fx-background-color: red");
+        tableView.setItems(data);
+        tableView.getColumns().add(nameColumn);
 
-        // Set up the main layout
-        VBox vbox = new VBox(10, rowsLabel, rowsField, columnsLabel, columnsField, okButton, gridPane);
-        vbox.setPadding(new Insets(10));
-        vbox.setAlignment(Pos.TOP_CENTER);
+        TextField textField = new TextField();
+        textField.setPromptText("Enter name");
 
-        // Set button action
-        okButton.setOnAction(event -> {
-            int rows = Integer.parseInt(rowsField.getText());
-            int columns = Integer.parseInt(columnsField.getText());
-            generateSeatingChart(rows, columns);
+        // Bind selected item to TextField
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+        	if (oldSelection != null) {
+                textField.textProperty().unbindBidirectional(oldSelection.nameProperty());
+        	}
+            if (newSelection != null) {
+                textField.textProperty().bindBidirectional(newSelection.nameProperty());
+            } else {
+            	textField.setText("");
+            }
         });
 
-        // Create the scene and set the stage
-        Scene scene = new Scene(vbox, 800, 600);
+        VBox vbox = new VBox(tableView, textField);
+        Scene scene = new Scene(vbox);
+
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Cinema Seating Chart");
         primaryStage.show();
-    }
-
-    // Method to generate seating chart
-    private void generateSeatingChart(int rows, int columns) {
-        gridPane.getChildren().clear(); // Clear existing buttons
-
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < columns; col++) {
-                Button seatButton = new Button();
-                seatButton.setMinSize(40, 40); // Ensure buttons are square
-                seatButton.setMaxSize(40, 40); // Allow buttons to expand
-
-                // Set button text to row letter and column number
-                String seatLabel = (char) ('A' + row) + String.valueOf(col + 1);
-                seatButton.setText(seatLabel);
-
-                // Optional: Add event handler for button clicks
-                seatButton.setOnAction(event -> {
-                    System.out.println("Seat " + seatButton.getText() + " clicked");
-                });
-
-                // Add button to gridPane
-                gridPane.add(seatButton, col, row);
-            }
-        }
     }
 
     public static void main(String[] args) {
         launch(args);
     }
+    
+    public class Person {
+        private final SimpleStringProperty name;
+
+        public Person(String name) {
+            this.name = new SimpleStringProperty(name);
+        }
+
+        public String getName() {
+            return name.get();
+        }
+
+        public void setName(String name) {
+            this.name.set(name);
+        }
+
+        public SimpleStringProperty nameProperty() {
+            return name;
+        }
+    }
+
 }
-
-

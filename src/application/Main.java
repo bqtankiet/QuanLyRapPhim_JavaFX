@@ -41,12 +41,12 @@ public class Main extends Application {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			SceneController.GetInstance().init(primaryStage, scene);
 			primaryStage.setScene(scene);
-			primaryStage.setWidth(1366);
-			primaryStage.setHeight(700);
+			primaryStage.setMinWidth(1366);
+			primaryStage.setMinHeight(700);
 			primaryStage.centerOnScreen();
-			primaryStage.setFullScreen(true);
-			primaryStage.setFullScreenExitHint("");
-			primaryStage.setResizable(false);
+//			primaryStage.setFullScreen(true);
+//			primaryStage.setFullScreenExitHint("");
+//			primaryStage.setResizable(false);
 			primaryStage.show();
 		} catch(Exception e) {
 			System.err.println("Khong doc duoc file");

@@ -1,6 +1,7 @@
 package models;
 
 import java.util.List;
+import java.util.Objects;
 
 import models.enums.LoaiPhong;
 
@@ -71,4 +72,16 @@ public class PhongChieu {
 		return this.soDay * this.soHang;
 	}
 
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PhongChieu that = (PhongChieu) o;
+        return soHang == that.soHang &&
+                soDay == that.soDay &&
+                Objects.equals(tenPhong, that.tenPhong) &&
+                loaiPhong == that.loaiPhong &&
+                Objects.equals(dsGhe, that.dsGhe);
+    }
+	
 }

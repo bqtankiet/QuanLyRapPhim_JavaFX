@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import models.tableViewItem.RapItem;
 
@@ -56,4 +57,13 @@ public class Rap {
 		return this.dsPhongChieu.size();
 	}
 
+	 @Override
+	    public boolean equals(Object o) {
+	        if (this == o) return true;
+	        if (o == null || getClass() != o.getClass()) return false;
+	        Rap rap = (Rap) o;
+	        return Objects.equals(tenRap, rap.tenRap) &&
+	                Objects.equals(diaChi, rap.diaChi) &&
+	                Objects.equals(dsPhongChieu, rap.dsPhongChieu);
+	    }
 }

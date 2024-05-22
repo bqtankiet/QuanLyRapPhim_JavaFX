@@ -23,5 +23,4 @@ public class AlertDialog{
         	return false;
         }
 	}
-	
 }
