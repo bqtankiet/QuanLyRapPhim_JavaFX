@@ -13,7 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import models.Phim;
-import models.PhimItem;
+import models.tableViewItem.PhimItem;
 import utils.PaneController;
 
 public class PhimController implements Initializable {

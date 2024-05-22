@@ -27,10 +27,15 @@ public final class SceneController {
 	public Stage getCurrentStage() {
 		return primaryStage;
 	}
+	
+	public Scene getCurrentScene() {
+		return primarySence;
+	}
 
 	public void init(Stage primaryStage, Scene mainScene) {
 		this.primarySence = mainScene;
 		this.primaryStage = primaryStage;
+		PaneController.getInstance().init((Pane)primarySence.getRoot());
 	}
 
 	public void replaceScene(String scene) throws Exception {

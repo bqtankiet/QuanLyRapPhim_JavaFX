@@ -11,7 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import utils.SceneController;
 
 public class ThemSuatChieuController implements Initializable{
-
+	public static final String FXML = "/views/suatchieu/themSuatChieu.fxml";
+	
     @FXML
     private ChoiceBox<String> PhimChoicebox;
 

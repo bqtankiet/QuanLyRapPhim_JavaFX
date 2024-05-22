@@ -12,6 +12,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import utils.PaneController;
 import utils.SceneController;
 
 public class SuatChieuController implements Initializable {
@@ -37,12 +38,14 @@ public class SuatChieuController implements Initializable {
 		// TODO Auto-generated method stub
 		themSuatChieuBtn.setOnAction(event -> themSuatChieuBtnAction());
 	}
+
 	private void themSuatChieuBtnAction() {
-		try {
-			Pane pane = FXMLLoader.load(getClass().getResource("/views/suatchieu/themSuatChieu.fxml"));
-			SceneController.GetInstance().addPane(pane);
-		} catch (IOException e) {
-		}
+//		try {
+//			Pane pane = FXMLLoader.load(getClass().getResource("/views/suatchieu/themSuatChieu.fxml"));
+//			SceneController.GetInstance().addPane(pane);
+//		} catch (IOException e) {
+//		}
+		PaneController.getInstance().addPane(PaneController.getInstance().getRootPane(),ThemSuatChieuController.FXML);
 	}
 
 }

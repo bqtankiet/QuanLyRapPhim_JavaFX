@@ -1,4 +1,4 @@
-package models;
+package models.tableViewItem;
 
 import java.io.ByteArrayInputStream;
 
@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import models.Phim;
 
 public class PhimItem {
 

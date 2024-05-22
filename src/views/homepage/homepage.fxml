@@ -52,7 +52,11 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </HBox.margin>
          <center>
-            <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <AnchorPane fx:id="parent" BorderPane.alignment="CENTER">
+               <children>
+                  <AnchorPane fx:id="mainPane" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
    </children>

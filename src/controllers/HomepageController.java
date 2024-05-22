@@ -12,6 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import utils.PaneController;
 
 public class HomepageController implements Initializable {
 	public static final String FXML = "/views/homepage/homepage.fxml";
@@ -25,7 +26,7 @@ public class HomepageController implements Initializable {
 	private BorderPane borderpane;
 	
 	@FXML
-	private AnchorPane mainPane;
+	private AnchorPane mainPane, parent;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -53,29 +54,38 @@ public class HomepageController implements Initializable {
 
 	private void khuyenmaiBtnOnClick() {
 		setCurrentBtn(khuyenmaiBtn);
-		switchMainPane(KhuyenMaiController.FXML);
+//		switchMainPane(KhuyenMaiController.FXML);
+		PaneController.getInstance().replacePane(currentMainPane(), KhuyenMaiController.FXML);
 	}
 	
 	private void giaVeBtnOnClick() {
 		setCurrentBtn(giaVeBtn);
-		switchMainPane(GiaVeController.FXML);
+//		switchMainPane(GiaVeController.FXML);
+		PaneController.getInstance().replacePane(currentMainPane(), GiaVeController.FXML);
 	}
 
 	private void suatChieuBtnOnClick() {
 		setCurrentBtn(suatChieuBtn);
-		switchMainPane(SuatChieuController.FXML);
+//		switchMainPane(SuatChieuController.FXML);
+		PaneController.getInstance().replacePane(currentMainPane(), SuatChieuController.FXML);
 	}
 	
 	private void rapBtnOnClick() {
 		setCurrentBtn(rapBtn);
-		switchMainPane(RapController.FXML);
+//		switchMainPane(RapController.FXML);
+		PaneController.getInstance().replacePane(currentMainPane(), RapController.FXML);
 	}
 	
 	private void phimBtnOnClick() {
 		setCurrentBtn(phimBtn);
-		switchMainPane(PhimController.FXML);
+//		switchMainPane(PhimController.FXML);
+		PaneController.getInstance().replacePane(currentMainPane(), PhimController.FXML);
 	}
 
+	private Pane currentMainPane() {
+		return (Pane)parent.getChildren().get(0);
+	}
+	
 	private Button currentButton;
 
 	private void setCurrentBtn(Button button) {

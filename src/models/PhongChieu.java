@@ -2,14 +2,16 @@ package models;
 
 import java.util.List;
 
+import models.enums.LoaiPhong;
+
 public class PhongChieu {
 
 	private String tenPhong;
-	private String loaiPhong;
+	private LoaiPhong loaiPhong;
 	private int soHang, soDay;
 	private List<Ghe> dsGhe;
 
-	public PhongChieu(String tenPhong, String loaiPhong, int soHang, int soDay) {
+	public PhongChieu(String tenPhong, LoaiPhong loaiPhong, int soHang, int soDay) {
 		super();
 		this.tenPhong = tenPhong;
 		this.loaiPhong = loaiPhong;
@@ -26,11 +28,11 @@ public class PhongChieu {
 		this.tenPhong = tenPhong;
 	}
 
-	public String getLoaiPhong() {
+	public LoaiPhong getLoaiPhong() {
 		return loaiPhong;
 	}
 
-	public void setLoaiPhong(String loaiPhong) {
+	public void setLoaiPhong(LoaiPhong loaiPhong) {
 		this.loaiPhong = loaiPhong;
 	}
 
@@ -60,6 +62,11 @@ public class PhongChieu {
 
 	// ###### END GETTER, SETTER ##########
 
+	@Override
+	public String toString() {
+		return String.format("%s, %s, %s day, %s hang", tenPhong, loaiPhong, soDay, soHang);
+	}
+	
 	public int getSoLuongGhe() {
 		return this.soDay * this.soHang;
 	}
