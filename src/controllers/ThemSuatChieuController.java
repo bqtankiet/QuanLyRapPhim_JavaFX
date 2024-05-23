@@ -21,6 +21,7 @@ import models.Rap;
 import models.SuatChieu;
 import storage.StorageLichChieu;
 import storage.StoragePhim;
+import utils.AlertDialog;
 import utils.SceneController;
 
 public class ThemSuatChieuController implements Initializable {
@@ -136,8 +137,13 @@ public class ThemSuatChieuController implements Initializable {
 		LichChieu lichChieu = new LichChieu(rap, phongChieu, ngayChieu);
 		SuatChieu suatChieu = new SuatChieu(thoiGian, phim, phuDe, "Available");
 		lichChieu.themSuatChieu(suatChieu);
-		System.out.println(StorageLichChieu.getLichChieu(lichChieu));
+		StorageLichChieu.themLichChieu(lichChieu);
+//		System.out.println(StorageLichChieu.getLichChieu(lichChieu));
 //		System.out.println(lichChieu);
+		SuatChieuController.getInstance().clearAccordion();
+		SuatChieuController.getInstance().setupAccordion(rap);
+		SceneController.GetInstance().removePane(rootPane);
+		AlertDialog.showConfirmAlert("Lưu thành công");
 	}
 
 	private void closeBtnAction() {

@@ -2,8 +2,10 @@ package controllers;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,10 +16,14 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
+import models.LichChieu;
 import models.PhongChieu;
 import models.Rap;
+import models.SuatChieu;
+import storage.StorageLichChieu;
 import storage.StorageRap;
 import utils.PaneController;
 
@@ -71,14 +77,13 @@ public class SuatChieuController implements Initializable {
 		});
 	}
 
-	private void setupAccordion(Rap selectedRap) {
+	public void setupAccordion(Rap selectedRap) {
 		for (PhongChieu phong : selectedRap.getDsPhongChieu()) {
-	        String title = phong.getTenPhong() + phong.getLoaiPhong().toString().substring(5);
-			DSSuatChieuPane pane = new DSSuatChieuPane(title);
+			DSSuatChieuPane pane = new DSSuatChieuPane(phong);
 		}
 	}
 
-	private void clearAccordion() {
+	public void clearAccordion() {
 		phongChieuAccordion.getPanes().clear();
 	}
 
@@ -112,28 +117,49 @@ public class SuatChieuController implements Initializable {
 		Rap selectedRap = rapChoicebox.getSelectionModel().getSelectedItem();
 		return selectedRap;
 	}
-	
+
 	public LocalDate getSelectedDate() {
 		LocalDate date = ngayChieuDatepicker.getValue();
 		return date;
 	}
-	
+
 	private class DSSuatChieuPane extends TitledPane {
-		public DSSuatChieuPane(String title) {
+		private PhongChieu phongChieu;
+		private TableColumn<SuatChieu, String> colThoiGian;
+		private TableColumn<SuatChieu, String> colTenPhim;
+		private TableColumn<SuatChieu, String> colPhuDe;
+		private TableColumn<SuatChieu, String> colTrangThai;
+		private TableView<SuatChieu> tableView;
+		private AnchorPane anchorPane;
+
+		public DSSuatChieuPane(PhongChieu phongChieu) {
+			this.phongChieu = phongChieu;
+			init(phongChieu);
+			loadData();
+		}
+
+		private void init(PhongChieu phongChieu) {
 			// Init TableColumn
-			TableColumn<String, String> colThoiGian = new TableColumn<>("Thời gian");
-			TableColumn<String, String> colTenPhim = new TableColumn<>("Tên phim");
-			TableColumn<String, String> colPhuDe = new TableColumn<>("Phụ đề");
-			TableColumn<String, String> colTrangThai = new TableColumn<>("Trạng thái");
+			colThoiGian = new TableColumn<>("Thời gian");
 			colThoiGian.setPrefWidth(150);
 			colThoiGian.setResizable(false);
+			colThoiGian.setCellValueFactory(new PropertyValueFactory<>("thoigian"));
+			
+			colTenPhim = new TableColumn<>("Tên phim");
+		    colTenPhim.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPhim().getTenPhim()));
+			
+			colPhuDe = new TableColumn<>("Phụ đề");
 			colPhuDe.setPrefWidth(150);
 			colPhuDe.setResizable(false);
+		    colPhuDe.setCellValueFactory(new PropertyValueFactory<>("phude"));
+			
+			colTrangThai = new TableColumn<>("Trạng thái");
 			colTrangThai.setPrefWidth(150);
 			colTrangThai.setResizable(false);
+		    colTrangThai.setCellValueFactory(new PropertyValueFactory<>("trangthai"));
 
 			// Initialize TableView
-			TableView<String> tableView = new TableView<>();
+			tableView = new TableView<>();
 			tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY_ALL_COLUMNS);
 			tableView.getColumns().add(colThoiGian);
 			tableView.getColumns().add(colTenPhim);
@@ -141,7 +167,7 @@ public class SuatChieuController implements Initializable {
 			tableView.getColumns().add(colTrangThai);
 
 			// Initialize AnchorPane
-			AnchorPane anchorPane = new AnchorPane();
+			anchorPane = new AnchorPane();
 			anchorPane.getChildren().add(tableView);
 
 			// Set constraints to fit TableView with AnchorPane
@@ -151,10 +177,20 @@ public class SuatChieuController implements Initializable {
 			AnchorPane.setBottomAnchor(tableView, 0.0);
 
 			// Add anchorpane to accordion
-			phongChieuAccordion.getPanes().add(new TitledPane(title, anchorPane));
+			phongChieuAccordion.getPanes().add(new TitledPane(phongChieu.getTenPhong(), anchorPane));
+		}
+
+		private void loadData() {
+			Rap rap = getSelectedRap();
+			LocalDate date = getSelectedDate();
+			String ngayChieu = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			
+			LichChieu lichChieu = new LichChieu(rap, phongChieu, ngayChieu);
+			System.out.println(StorageLichChieu.getLichChieu(lichChieu));
+			lichChieu = StorageLichChieu.getLichChieu(lichChieu);
+			if(lichChieu == null) return;
+			tableView.getItems().setAll(FXCollections.observableArrayList(lichChieu.getDsSuatChieu()));
 		}
 	}
-
-	
 
 }
