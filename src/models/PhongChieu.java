@@ -63,10 +63,21 @@ public class PhongChieu {
 
 	// ###### END GETTER, SETTER ##########
 
-	@Override
-	public String toString() {
-		return String.format("%s, %s, %s day, %s hang", tenPhong, loaiPhong, soDay, soHang);
-	}
+	public String toString(int indentLevel) {
+        String indent = " ".repeat(indentLevel);
+//        return indent + "PhongChieu {\n" +
+//               indent + "  tenPhong: '" + tenPhong + "',\n" +
+//               indent + "  loaiPhong: '" + loaiPhong + "',\n" +
+//               indent + "  soDay: " + soDay + ",\n" +
+//               indent + "  soHang: " + soHang + "\n" +
+//               indent + "}";
+        return indent + tenPhong +", " + loaiPhong + ", " + soDay + " day, " + soHang + " hang";
+    }
+
+    @Override
+    public String toString() {
+        return toString(0);
+    }
 	
 	public int getSoLuongGhe() {
 		return this.soDay * this.soHang;

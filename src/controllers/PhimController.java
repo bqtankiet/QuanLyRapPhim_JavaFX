@@ -1,10 +1,8 @@
 package controllers;
 
 import java.net.URL;
-import java.util.Iterator;
 import java.util.ResourceBundle;
 
-import application.Test.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +13,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import models.Phim;
 import models.tableViewItem.PhimItem;
 import storage.StoragePhim;
@@ -70,7 +69,9 @@ public class PhimController implements Initializable {
 	}
 
 	private void themphimBtnOnClick() {
-		PaneController.getInstance().replacePane(rootPane, ThemPhimController.FXML);
+//		PaneController.getInstance().replacePane(rootPane, ThemPhimController.FXML);
+		Pane masterpane = PaneController.getInstance().getRootPane();
+		PaneController.getInstance().addPane(masterpane, ThemPhimController.FXML);
 		ThemPhimController.getInstance().setState("add");
 	}
 
@@ -94,7 +95,9 @@ public class PhimController implements Initializable {
 			row.setOnMouseClicked(event -> {
 				if (event.getClickCount() == 2 && (!row.isEmpty())) {
 					PhimItem rowData = row.getItem();
-					PaneController.getInstance().replacePane(rootPane, ThemPhimController.FXML);
+//					PaneController.getInstance().replacePane(rootPane, ThemPhimController.FXML);
+					Pane masterpane = PaneController.getInstance().getRootPane();
+					PaneController.getInstance().addPane(masterpane, ThemPhimController.FXML);
 					ThemPhimController.getInstance().loadData(rowData.getPhim());
 					ThemPhimController.getInstance().setState("edit");
 				}

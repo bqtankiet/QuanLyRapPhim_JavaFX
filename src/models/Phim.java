@@ -99,12 +99,26 @@ public class Phim {
 	}
 	// ########## END GETTER, SETTER ############
 
-	 @Override
-		public String toString() {
-			return "Phim [tenPhim=" + tenPhim + ", daoDien=" + daoDien + ", dienVien=" + dienVien + ", theLoai="
-					+ theLoai + ", thoiLuong=" + thoiLuong + ", quocGia=" + quocGia + ", ngayKhoiChieu=" + ngayKhoiChieu
-					+ ", doTuoi=" + doTuoi + ", hinhAnh=" + hinhAnh + ", moTa=" + moTa + "]";
-		}
+	public String toString(int indentLevel) {
+        String indent = " ".repeat(indentLevel);
+        return indent + "Phim {\n" +
+               indent + "  tenPhim: '" + tenPhim + "',\n" +
+               indent + "  daoDien: '" + daoDien + "',\n" +
+               indent + "  dienVien: '" + dienVien + "',\n" +
+               indent + "  theLoai: '" + theLoai + "',\n" +
+               indent + "  thoiLuong: " + thoiLuong + ",\n" +
+               indent + "  quocGia: '" + quocGia + "',\n" +
+               indent + "  ngayKhoiChieu: '" + ngayKhoiChieu + "',\n" +
+               indent + "  doTuoi: '" + doTuoi + "',\n" +
+               indent + "  hinhAnh: '" + hinhAnh + "',\n" +
+               indent + "  moTa: '" + moTa + "'\n" +
+               indent + "}";
+    }
+
+    @Override
+    public String toString() {
+        return toString(0);
+    }
 	
 	 // PhimBuilder class
     public static class PhimBuilder {

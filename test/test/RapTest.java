@@ -24,6 +24,7 @@ public class RapTest {
 
 //		System.out.println(rap1.equals(rap2));
 		System.out.println(rap1.createRapItem().equals(rap2.createRapItem()));
+		System.out.println(rap2);
 		
 
 	}

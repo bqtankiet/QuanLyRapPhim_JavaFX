@@ -56,7 +56,7 @@
                               <Button fx:id="chapNhanBtn" mnemonicParsing="false" text="Chấp nhận" />
                            </children>
                         </HBox>
-                        <Accordion VBox.vgrow="ALWAYS">
+                        <Accordion fx:id="phongChieuAccordion" VBox.vgrow="ALWAYS">
                           <panes>
                             <TitledPane animated="false" text="Phong 1">
                                  <content>

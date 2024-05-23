@@ -19,7 +19,7 @@ public class Rap {
 	}
 
 	// ###### GETTER, SETTER ##########
-	
+
 	public List<PhongChieu> getDsPhongChieu() {
 		return dsPhongChieu;
 	}
@@ -57,13 +57,36 @@ public class Rap {
 		return this.dsPhongChieu.size();
 	}
 
-	 @Override
-	    public boolean equals(Object o) {
-	        if (this == o) return true;
-	        if (o == null || getClass() != o.getClass()) return false;
-	        Rap rap = (Rap) o;
-	        return Objects.equals(tenRap, rap.tenRap) &&
-	                Objects.equals(diaChi, rap.diaChi) &&
-	                Objects.equals(dsPhongChieu, rap.dsPhongChieu);
-	    }
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
+		Rap rap = (Rap) o;
+		return Objects.equals(tenRap, rap.tenRap) && Objects.equals(diaChi, rap.diaChi)
+				&& Objects.equals(dsPhongChieu, rap.dsPhongChieu);
+	}
+
+	public String toString(int indentLevel) {
+        String indent = " ".repeat(indentLevel);
+        StringBuilder dsPhongChieuStr = new StringBuilder();
+        for (PhongChieu phong : dsPhongChieu) {
+            dsPhongChieuStr.append(phong.toString(indentLevel + 2)).append(",\n");
+        }
+
+        return new StringBuilder()
+            .append(indent).append("Rap {\n")
+            .append(indent).append("  tenRap: '").append(tenRap).append("',\n")
+            .append(indent).append("  diaChi: '").append(diaChi).append("',\n")
+            .append(indent).append("  dsPhongChieu: [\n").append(dsPhongChieuStr).append(indent).append("  ]\n")
+            .append(indent).append("}")
+            .toString();
+    }
+
+    @Override
+    public String toString() {
+        return toString(0);
+    }
+
 }

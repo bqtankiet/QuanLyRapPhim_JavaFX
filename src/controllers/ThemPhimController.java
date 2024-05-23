@@ -22,6 +22,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import models.Phim;
 import utils.AlertDialog;
 import utils.PaneController;
+import utils.SceneController;
 
 public class ThemPhimController implements Initializable {
 	public static final String FXML = "/views/phim/themphim.fxml";
@@ -139,7 +140,8 @@ public class ThemPhimController implements Initializable {
 				PhimController.getInstance().chinhSua(phim);
 			}
 			}
-			PaneController.getInstance().replacePane(rootPane, PhimController.FXML);
+//			PaneController.getInstance().replacePane(rootPane, PhimController.FXML);
+			SceneController.GetInstance().removePane(rootPane);
 			PaneController.getInstance().paneMap.remove(ThemPhimController.FXML);
 		}
 	}
@@ -150,7 +152,8 @@ public class ThemPhimController implements Initializable {
 	 */
 	private void huyBtnAction() {
 		PaneController.getInstance().paneMap.remove(ThemPhimController.FXML);
-		PaneController.getInstance().replacePane(this.rootPane, PhimController.FXML);
+//		PaneController.getInstance().replacePane(this.rootPane, PhimController.FXML);
+		SceneController.GetInstance().removePane(rootPane);
 	}
 
 	/**
