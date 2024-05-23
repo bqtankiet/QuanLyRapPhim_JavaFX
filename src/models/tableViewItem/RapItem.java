@@ -3,6 +3,7 @@ package models.tableViewItem;
 import java.util.Objects;
 
 import javafx.beans.property.SimpleStringProperty;
+import models.PhongChieu;
 import models.Rap;
 
 public class RapItem {
@@ -19,6 +20,11 @@ public class RapItem {
 		this.soPhong = new SimpleStringProperty(rap.getSoPhong()+"");
 	}
 
+	public void themPhongChieu(PhongChieu phongChieu) {
+		this.rap.themPhongChieu(phongChieu);
+		this.soPhong.setValue(rap.getSoPhong()+"");
+	}
+	
 	public Rap getRap() {
 		return rap;
 	}

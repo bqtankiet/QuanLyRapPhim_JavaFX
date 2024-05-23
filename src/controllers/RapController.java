@@ -93,20 +93,30 @@ public class RapController implements Initializable {
 		PaneController.getInstance().addPane(PaneController.getInstance().getRootPane(), SoDoGheNgoiController.FXML);
 	}
 	
+//	public void themPhongChieu(PhongChieu phongChieu) {
+//		Rap rap = tableView.getSelectionModel().getSelectedItem().getRap();
+//		rap.themPhongChieu(phongChieu);
+//		ObservableList<RapItem> temp = FXCollections.observableArrayList();
+//		for (RapItem rapItem : dataRap) {
+//			temp.add(rapItem.getRap().createRapItem());
+//			System.out.println(rapItem.getRap().getTenRap());
+//		}
+//		tableView.getItems().clear();
+//		dataRap.clear();
+//		dataRap.setAll(temp);
+//		tableView.setItems(dataRap);
+//	}
+
 	public void themPhongChieu(PhongChieu phongChieu) {
-		Rap rap = tableView.getSelectionModel().getSelectedItem().getRap();
-		rap.themPhongChieu(phongChieu);
-		ObservableList<RapItem> temp = FXCollections.observableArrayList();
-		for (RapItem rapItem : dataRap) {
-			temp.add(rapItem.getRap().createRapItem());
-			System.out.println(rapItem.getRap().getTenRap());
-		}
-		tableView.getItems().clear();
-		dataRap.clear();
-		dataRap.setAll(temp);
+		int selectedIndex = tableView.getSelectionModel().getSelectedIndex();
+		RapItem selectedRapItem = dataRap.get(selectedIndex);
+		selectedRapItem.themPhongChieu(phongChieu);
+		dataRap.remove(selectedIndex);
+		dataRap.add(selectedIndex, selectedRapItem);
 		tableView.setItems(dataRap);
 	}
 
+	
 	private boolean hasChange() {
 		return !prevDataRap.equals(dataRap);
 	}
@@ -125,10 +135,6 @@ public class RapController implements Initializable {
 	}
 
 	private void themRapBtnAction() {
-		for (RapItem item : dataRap) {
-			tenRapField.textProperty().unbindBidirectional(item.tenRap);
-			diaChiField.textProperty().unbindBidirectional(item.diaChi);
-		}
 		// kiem tra thay doi
 		if (hasChange()) {
 			AlertDialog.showConfirmAlert("Hãy lưu lại thay đổi trước khi thêm rạp mới");

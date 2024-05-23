@@ -1,14 +1,17 @@
 package controllers;
 
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
+import application.Test.Person;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -66,23 +69,15 @@ public class PhimController implements Initializable {
 		themphimBtn.setOnAction(event -> themphimBtnOnClick());
 	}
 
-	private Object themphimBtnOnClick() {
-//		try {
-//			Pane replacePane = FXMLLoader.load(getClass().getResource("/views/phim/themphim.fxml"));
-//			BorderPane parent = (BorderPane) rootPane.getParent();
-//			parent.setCenter(replacePane);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+	private void themphimBtnOnClick() {
 		PaneController.getInstance().replacePane(rootPane, ThemPhimController.FXML);
-		return null;
+		ThemPhimController.getInstance().setState("add");
 	}
-	
+
 	public void themPhim(Phim phim) {
-		data.add(new PhimItem(phim));
-		tableView.setItems(data);
 		StoragePhim.data.add(phim);
+		this.data.add(new PhimItem(phim));
+		tableView.setItems(data);
 		System.out.println(StoragePhim.data.toString());
 	}
 
@@ -94,6 +89,18 @@ public class PhimController implements Initializable {
 		thoiLuongColumn.setCellValueFactory(new PropertyValueFactory<>("thoiLuong"));
 		quocGiaColumn.setCellValueFactory(new PropertyValueFactory<>("quocGia"));
 		ngayKhoiChieuColumn.setCellValueFactory(new PropertyValueFactory<>("ngayKhoiChieu"));
+		tableView.setRowFactory(tv -> {
+			TableRow<PhimItem> row = new TableRow<>();
+			row.setOnMouseClicked(event -> {
+				if (event.getClickCount() == 2 && (!row.isEmpty())) {
+					PhimItem rowData = row.getItem();
+					PaneController.getInstance().replacePane(rootPane, ThemPhimController.FXML);
+					ThemPhimController.getInstance().loadData(rowData.getPhim());
+					ThemPhimController.getInstance().setState("edit");
+				}
+			});
+			return row;
+		});
 	}
 
 	private void loadData() {
@@ -101,5 +108,14 @@ public class PhimController implements Initializable {
 			data.add(new PhimItem(phim));
 		}
 		tableView.setItems(data);
+	}
+
+	public void chinhSua(Phim phim) {
+		StoragePhim.data.set(getSelectedIndex(), phim);
+		data.set(getSelectedIndex(), new PhimItem(phim));
+	}
+	
+	public int getSelectedIndex() {
+		return tableView.getSelectionModel().getSelectedIndex();
 	}
 }

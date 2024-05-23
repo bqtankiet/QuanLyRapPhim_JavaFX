@@ -3,6 +3,7 @@ package controllers;
 import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
@@ -24,6 +25,17 @@ import utils.PaneController;
 
 public class ThemPhimController implements Initializable {
 	public static final String FXML = "/views/phim/themphim.fxml";
+	private static ThemPhimController instance;
+
+	public static ThemPhimController getInstance() {
+		if (instance == null) {
+			instance = new ThemPhimController();
+		}
+		return instance;
+	}
+
+	private String state;
+
 	@FXML
 	private AnchorPane rootPane;
 
@@ -62,12 +74,13 @@ public class ThemPhimController implements Initializable {
 
 	@FXML
 	private Button xacnhanBtn;
-	
+
 	@FXML
 	private ImageView phimImageView;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		instance = this;
 		ngayKhoiChieuDatepicker.setValue(LocalDate.now());
 		huyBtn.setOnAction(event -> huyBtnAction());
 		xacnhanBtn.setOnAction(event -> xacnhanBtnAction());
@@ -79,7 +92,8 @@ public class ThemPhimController implements Initializable {
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.getExtensionFilters().add(new ExtensionFilter("Image", "*.jpeg", "*.jpg", "*.png"));
 		File selectedFile = fileChooser.showOpenDialog(null);
-		if(selectedFile == null) return;
+		if (selectedFile == null)
+			return;
 //		// load image
 //		byte[] bytes = null;
 //		try {
@@ -97,30 +111,37 @@ public class ThemPhimController implements Initializable {
 	 * Phương thức này xử lý sự kiện khi nhấn vào button "Xác nhận" <br>
 	 * Đây là functional interface của EventHandler
 	 */
-	private Object xacnhanBtnAction() {
+	private void xacnhanBtnAction() {
 		boolean passed = kiemTraThongTin();
 		if (passed) {
-			boolean confirm = AlertDialog.showConfirmAlert("Bạn có chắc muốn thêm phim mới?");
-			if (confirm) {
-				// TODO Yêu cầu thêm xử lý sự kiện thêm phim mới vào CSDL
-				// tao object Phim
-				Phim phim = Phim.builder()
-						.tenPhim(tenPhimField.getText())
-						.daoDien(daoDienField.getText())
-						.dienVien(dienVienField.getText())
-						.theLoai(theLoaiField.getText())
-						.thoiLuong(Integer.parseInt(thoiLuongField.getText()))
-						.quocGia(quocGiaField.getText())
-						.ngayKhoiChieu(ngayKhoiChieuDatepicker.getValue().toString())
-						.doTuoi(Integer.parseInt(doTuoiField.getText()))
-						.moTa(moTaTextArea.getText())
-						.hinhAnh(phimImageView.getImage().getUrl().toString()).build();
-				
-				System.out.println(phim.toString());
+			AlertDialog.showConfirmAlert("Lưu thành công");
+
+			// TODO Yêu cầu thêm xử lý sự kiện thêm phim mới vào CSDL
+			// tao object Phim
+			Phim phim = Phim.builder()
+					.tenPhim(tenPhimField.getText())
+					.daoDien(daoDienField.getText())
+					.dienVien(dienVienField.getText())
+					.theLoai(theLoaiField.getText())
+					.thoiLuong(Integer.parseInt(thoiLuongField.getText()))
+					.quocGia(quocGiaField.getText())
+					.ngayKhoiChieu(ngayKhoiChieuDatepicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString())
+					.doTuoi(Integer.parseInt(doTuoiField.getText()))
+					.moTa(moTaTextArea.getText())
+					.hinhAnh(phimImageView.getImage().getUrl().substring(5))
+					.build();
+			System.out.println(phim.toString());
+			switch (state) {
+			case "add" -> {
 				PhimController.getInstance().themPhim(phim);
 			}
+			case "edit" -> {
+				PhimController.getInstance().chinhSua(phim);
+			}
+			}
+			PaneController.getInstance().replacePane(rootPane, PhimController.FXML);
+			PaneController.getInstance().paneMap.remove(ThemPhimController.FXML);
 		}
-		return null;
 	}
 
 	/**
@@ -155,5 +176,24 @@ public class ThemPhimController implements Initializable {
 			result = false;
 		}
 		return result;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void loadData(Phim phim) {
+		tenPhimField.setText(phim.getTenPhim());
+		quocGiaField.setText(phim.getQuocGia());
+		theLoaiField.setText(phim.getTheLoai());
+		thoiLuongField.setText(phim.getThoiLuong() + "");
+		daoDienField.setText(phim.getDaoDien());
+		dienVienField.setText(phim.getDienVien());
+		ngayKhoiChieuDatepicker.setValue(LocalDate.parse(phim.getNgayKhoiChieu(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+		doTuoiField.setText(phim.getDoTuoi() + "");
+		moTaTextArea.setText(phim.getMoTa());
+		File file = new File(phim.getHinhAnh());
+		Image image = new Image(file.toURI().toString());
+		phimImageView.setImage(image);
 	}
 }
