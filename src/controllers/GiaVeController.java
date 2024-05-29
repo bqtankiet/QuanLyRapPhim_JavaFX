@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import static models.enums.LoaiPhuThu.*;
+import storage.StorageGiaPhuThu;
 import storage.StorageGiaVe;
 
 public class GiaVeController implements Initializable{
@@ -52,10 +54,10 @@ public class GiaVeController implements Initializable{
     private TextField thanhvien_ngaythuong;
 
     @FXML
-    private TextField thanvien_cuoituan;
+    private TextField thanhvien_cuoituan;
 
     @FXML
-    private Button themSuatChieuBtn;
+    private Button saveBtn;
 
     @FXML
     private TextField treem_cuoituan;
@@ -70,7 +72,25 @@ public class GiaVeController implements Initializable{
 	}
 
 	private void initGiaPhuThu() {
+		// phu thu 3D
+		int phuThu3D = StorageGiaPhuThu.data.get(PHUTHU_3D).getGiaPhuThu();
+		this.phuthu3D.setText(phuThu3D+"");
 		
+		// phu thu 4D
+		int phuThu4D = StorageGiaPhuThu.data.get(PHUTHU_4D).getGiaPhuThu();
+		this.phuthu4D.setText(phuThu4D+"");
+		
+		// phu thu IMAX
+		int phuThuIMAX = StorageGiaPhuThu.data.get(PHUTHU_IMAX).getGiaPhuThu();
+		this.phuthuIMAX.setText(phuThuIMAX+"");
+		
+		// phu thu ghe vip
+		int phuThuVIP = StorageGiaPhuThu.data.get(PHUTHU_GHEVIP).getGiaPhuThu();
+		this.phuthuVIP.setText(phuThuVIP+"");
+		
+		// phu thu ghe couple
+		int phuthuCOUPLE = StorageGiaPhuThu.data.get(PHUTHU_GHECOUPLE).getGiaPhuThu();
+		this.phuthuCOUPLE.setText(phuthuCOUPLE+"");
 	}
 
 	private void initGiaVe() {
@@ -94,9 +114,9 @@ public class GiaVeController implements Initializable{
 		
 		// thanhvien
 		int thanhvien_ngaythuong = StorageGiaVe.data.get(MEMBER).getGiaVeNgayThuong();
-		int thanhvien_cuoituan = StorageGiaVe.data.get(MEMBER).getGiaVeNgayThuong();
+		int thanhvien_cuoituan = StorageGiaVe.data.get(MEMBER).getGiaVeCuoiTuan();
 		this.thanhvien_ngaythuong.setText(thanhvien_ngaythuong+"");
-		this.thanvien_cuoituan.setText(thanhvien_cuoituan+"");
+		this.thanhvien_cuoituan.setText(thanhvien_cuoituan+"");
 	}
 
 }

@@ -35,7 +35,7 @@ public class PaneController {
 			if (pane == null) {
 				pane = FXMLLoader.load(getClass().getResource(other));
 //				pane = loader.load();
-				paneMap.put(other, pane);
+//				paneMap.put(other, pane);
 			}
 //			System.out.println(current.getParent());
 			Pane parent = (Pane) current.getParent();

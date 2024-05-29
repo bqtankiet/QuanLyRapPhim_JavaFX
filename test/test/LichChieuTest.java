@@ -28,12 +28,14 @@ public class LichChieuTest {
 //		
 //		System.out.println(StorageLichChieu.data);
 		
-		Rap rap1 = StorageRap.data.get(0);
-		PhongChieu phong1_rap1 = rap1.getDsPhongChieu().get(0);
-
-		LichChieu lichChieu1 = new LichChieu(rap1, phong1_rap1, "01/06/2024");
-
-		System.out.println(StorageLichChieu.getLichChieu(lichChieu1));
+//		Rap rap1 = StorageRap.data.get(0);
+//		PhongChieu phong1_rap1 = rap1.getDsPhongChieu().get(0);
+//
+//		LichChieu lichChieu1 = new LichChieu(rap1, phong1_rap1, "01/06/2024");
+//
+//		System.out.println(StorageLichChieu.getLichChieu(lichChieu1));
+		
+		System.out.println(StorageLichChieu.data);
 
 	}
 	

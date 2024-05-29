@@ -37,6 +37,7 @@
                   <Button fx:id="suatChieuBtn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Suất chiếu" />
                   <Button fx:id="giaVeBtn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Giá vé" />
                   <Button fx:id="khuyenmaiBtn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Khuyến mãi" />
+                  <Button fx:id="banveBtn" alignment="TOP_LEFT" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Bán vé" />
                </children>
                <padding>
                   <Insets left="20.0" right="20.0" />

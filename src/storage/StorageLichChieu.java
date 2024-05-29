@@ -36,8 +36,8 @@ public class StorageLichChieu {
 		SuatChieu suatChieu5 = new SuatChieu("21:00", phim1, "Tieng Viet", "Available");
 
 		
-		LichChieu lichChieu1 = new LichChieu(rap1, phong1_rap1, "01/06/2024");
-		LichChieu lichChieu2 = new LichChieu(rap1, phong2_rap1, "01/06/2024");
+		LichChieu lichChieu1 = new LichChieu(rap1, phong1_rap1, "05/06/2024");
+		LichChieu lichChieu2 = new LichChieu(rap1, phong2_rap1, "05/06/2024");
 		lichChieu1.themSuatChieu(suatChieu1);
 		lichChieu1.themSuatChieu(suatChieu3);
 		lichChieu1.themSuatChieu(suatChieu4);

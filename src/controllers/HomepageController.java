@@ -17,7 +17,7 @@ import utils.PaneController;
 public class HomepageController implements Initializable {
 	public static final String FXML = "/views/homepage/homepage.fxml";
 	@FXML
-	private Button rapBtn, phimBtn, suatChieuBtn, giaVeBtn, khuyenmaiBtn;
+	private Button rapBtn, phimBtn, suatChieuBtn, giaVeBtn, khuyenmaiBtn, banveBtn;
 
 	@FXML
 	private ScrollPane scrollpane;
@@ -35,6 +35,7 @@ public class HomepageController implements Initializable {
 		suatChieuBtn.setOnAction(event -> suatChieuBtnOnClick());
 		giaVeBtn.setOnAction(event -> giaVeBtnOnClick());
 		khuyenmaiBtn.setOnAction(event -> khuyenmaiBtnOnClick());
+		banveBtn.setOnAction(event -> banveBtnOnClick());
 	}
 
 	public void switchMainPane(String fxml) {
@@ -52,6 +53,11 @@ public class HomepageController implements Initializable {
 	}
 	
 
+	private void banveBtnOnClick() {
+		setCurrentBtn(banveBtn);
+		PaneController.getInstance().replacePane(currentMainPane(), BanVeController.FXML);
+	}
+	
 	private void khuyenmaiBtnOnClick() {
 		setCurrentBtn(khuyenmaiBtn);
 //		switchMainPane(KhuyenMaiController.FXML);
