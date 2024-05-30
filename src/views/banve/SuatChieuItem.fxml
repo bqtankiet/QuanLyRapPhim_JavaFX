@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+
+<HBox alignment="CENTER_LEFT" spacing="100.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SuatChieuItemController">
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="5.0">
+         <children>
+            <Label fx:id="loaiPhong" text="2D" />
+            <Label text="-" />
+            <Label fx:id="phuDe" layoutX="36.0" layoutY="10.0" text="Tieng Viet" />
+         </children>
+      </HBox>
+      <Button fx:id="thoiGian" mnemonicParsing="false" style="-fx-background-color: darkgray;" text="17:00" />
+      <Label fx:id="tenPhong" layoutX="79.0" layoutY="10.0" text="Phong 01" />
+      <HBox alignment="BOTTOM_LEFT" spacing="5.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="2.0">
+               <children>
+                  <Label fx:id="soGheConTrong" text="90" />
+                  <Label text="/" />
+                  <Label fx:id="tongSoGhe" text="120" />
+                  <Label text="Ghe" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</HBox>

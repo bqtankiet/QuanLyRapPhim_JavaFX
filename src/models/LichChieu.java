@@ -86,6 +86,7 @@ public class LichChieu {
 		if(dsSuatChieu == null) {
 			dsSuatChieu = new ArrayList<>();
 		}
+		suatChieu.setPhong(phong);
 		dsSuatChieu.add(suatChieu);
 	}
 	

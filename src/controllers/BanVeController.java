@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -26,7 +27,6 @@ import models.Phim;
 import models.Rap;
 import models.SuatChieu;
 import storage.StorageLichChieu;
-import storage.StoragePhim;
 import storage.StorageRap;
 
 public class BanVeController implements Initializable {
@@ -60,7 +60,7 @@ public class BanVeController implements Initializable {
 	@FXML
 	private FlowPane cardLayout;
 
-	public HashMap<Phim, SuatChieu> mapSuatChieu;
+	public HashMap<Phim, ArrayList<SuatChieu>> mapSuatChieu;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -82,7 +82,12 @@ public class BanVeController implements Initializable {
 			if (lichchieu.getRap().equals(getSelectedRap())
 					&& lichchieu.getNgaychieu().equals(getSelectedNgayChieu())) {
 				for (SuatChieu sc : lichchieu.getDsSuatChieu()) {
-					mapSuatChieu.put(sc.getPhim(), sc);
+					ArrayList<SuatChieu> listSuatChieu = mapSuatChieu.get(sc.getPhim());
+					if(listSuatChieu == null) {
+						listSuatChieu = new ArrayList<>();
+						mapSuatChieu.put(sc.getPhim(), listSuatChieu);
+					}
+					listSuatChieu.add(sc);
 				}
 			}
 		}

@@ -5,13 +5,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import models.Phim;
+import utils.PaneController;
 
 public class PhimCardController implements Initializable{
 	public static String FXML = "/views/items/PhimCard.fxml";
@@ -44,8 +45,8 @@ public class PhimCardController implements Initializable{
 	private void handleCardOnClicked() {
 		root.setOnMouseClicked(event -> {
 			//TODO: 
-//			System.out.println(phim);
-			System.out.println(BanVeController.getInstance().mapSuatChieu.get(phim));
+//			System.out.println(BanVeController.getInstance().mapSuatChieu.get(phim));
+			PaneController.getInstance().addPane(PaneController.getInstance().getRootPane(), DatVeController.FXML);
 		});
 	}
 

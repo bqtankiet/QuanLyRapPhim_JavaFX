@@ -30,20 +30,21 @@ public class StorageLichChieu {
 		PhongChieu phong2_rap2 = rap2.getDsPhongChieu().get(1);
 		
 		SuatChieu suatChieu1 = new SuatChieu("16:00", phim1, "Tieng Viet", "Available");
-		SuatChieu suatChieu2 = new SuatChieu("18:00", phim2, "Tieng Viet", "Available");
+		SuatChieu suatChieu2 = new SuatChieu("18:00", phim1, "Tieng Viet", "Available");
 		SuatChieu suatChieu3 = new SuatChieu("20:00", phim3, "Tieng Viet", "Available");
 		SuatChieu suatChieu4 = new SuatChieu("22:00", phim4, "Tieng Viet", "Available");
 		SuatChieu suatChieu5 = new SuatChieu("21:00", phim1, "Tieng Viet", "Available");
+		SuatChieu suatChieu6 = new SuatChieu("14:00", phim2, "Tieng Viet", "Available");
 
 		
 		LichChieu lichChieu1 = new LichChieu(rap1, phong1_rap1, "05/06/2024");
 		LichChieu lichChieu2 = new LichChieu(rap1, phong2_rap1, "05/06/2024");
 		lichChieu1.themSuatChieu(suatChieu1);
+		lichChieu1.themSuatChieu(suatChieu2);
 		lichChieu1.themSuatChieu(suatChieu3);
-		lichChieu1.themSuatChieu(suatChieu4);
-		lichChieu2.themSuatChieu(suatChieu2);
+		lichChieu2.themSuatChieu(suatChieu4);
 		lichChieu2.themSuatChieu(suatChieu5);
-		lichChieu2.themSuatChieu(suatChieu1);
+		lichChieu2.themSuatChieu(suatChieu6);
 		
 		data.add(lichChieu1);
 		data.add(lichChieu2);

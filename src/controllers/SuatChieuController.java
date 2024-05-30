@@ -186,7 +186,7 @@ public class SuatChieuController implements Initializable {
 			String ngayChieu = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 			
 			LichChieu lichChieu = new LichChieu(rap, phongChieu, ngayChieu);
-			System.out.println(StorageLichChieu.getLichChieu(lichChieu));
+//			System.out.println(StorageLichChieu.getLichChieu(lichChieu));
 			lichChieu = StorageLichChieu.getLichChieu(lichChieu);
 			if(lichChieu == null) return;
 			tableView.getItems().setAll(FXCollections.observableArrayList(lichChieu.getDsSuatChieu()));

@@ -135,7 +135,7 @@ public class ThemSuatChieuController implements Initializable {
 		
 		// Test
 		LichChieu lichChieu = new LichChieu(rap, phongChieu, ngayChieu);
-		SuatChieu suatChieu = new SuatChieu(thoiGian, phim, phuDe, "Available");
+		SuatChieu suatChieu = new SuatChieu(thoiGian, phim, phuDe, "Available", lichChieu.getPhong());
 		lichChieu.themSuatChieu(suatChieu);
 		StorageLichChieu.themLichChieu(lichChieu);
 //		System.out.println(StorageLichChieu.getLichChieu(lichChieu));
