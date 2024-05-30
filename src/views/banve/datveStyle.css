@@ -1,0 +1,35 @@
+.suat-chieu-item {
+    -fx-background-color: lightgray;
+    -fx-font-size: 16.0px;
+    -fx-font-weight: bold;
+}
+
+.suat-chieu-item:hover {
+    -fx-background-color: gray;
+    -fx-font-size: 16.0px;
+    -fx-font-weight: bold;
+}
+
+.huy-dat-ve-button{
+    -fx-font-size: 14.0;
+    -fx-font-weight: bold;
+    -fx-background-color: #201c2c;
+    -fx-text-fill: white;
+    -fx-background-radius: 15.0;
+}
+
+.huy-dat-ve-button:hover {
+    -fx-background-color: red;
+    -fx-cursor: hand;
+}
+
+.decrease-increase-button:hover {
+	-fx-background-color: red;
+}
+
+.decrease-increase-button {
+	-fx-font-size: 30;
+	-fx-font-weight: bold;
+	-fx-background-color: lightgray;
+	-fx-border-radius: 0;
+}

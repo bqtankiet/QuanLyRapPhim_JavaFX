@@ -5,7 +5,7 @@ import models.Phim;
 import models.PhongChieu;
 import models.Rap;
 import models.SuatChieu;
-import storage.StorageLichChieu;
+import storage.StorageSuatChieu;
 import storage.StoragePhim;
 import storage.StorageRap;
 
@@ -35,7 +35,7 @@ public class LichChieuTest {
 //
 //		System.out.println(StorageLichChieu.getLichChieu(lichChieu1));
 		
-		System.out.println(StorageLichChieu.data);
+		System.out.println(StorageSuatChieu.data);
 
 	}
 	

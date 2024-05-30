@@ -19,7 +19,7 @@ import models.Phim;
 import models.PhongChieu;
 import models.Rap;
 import models.SuatChieu;
-import storage.StorageLichChieu;
+import storage.StorageSuatChieu;
 import storage.StoragePhim;
 import utils.AlertDialog;
 import utils.SceneController;
@@ -134,10 +134,9 @@ public class ThemSuatChieuController implements Initializable {
 		String phuDe = PhudeChoicebox.getValue();
 		
 		// Test
-		LichChieu lichChieu = new LichChieu(rap, phongChieu, ngayChieu);
-		SuatChieu suatChieu = new SuatChieu(thoiGian, phim, phuDe, "Available", lichChieu.getPhong());
-		lichChieu.themSuatChieu(suatChieu);
-		StorageLichChieu.themLichChieu(lichChieu);
+		LichChieu lichChieu = new LichChieu(rap, ngayChieu);
+		SuatChieu suatChieu = new SuatChieu(thoiGian, phim, phuDe, "Available");
+		StorageSuatChieu.themSuatChieu(lichChieu,suatChieu,phongChieu);
 //		System.out.println(StorageLichChieu.getLichChieu(lichChieu));
 //		System.out.println(lichChieu);
 		SuatChieuController.getInstance().clearAccordion();

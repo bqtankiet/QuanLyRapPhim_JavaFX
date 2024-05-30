@@ -1,75 +1,88 @@
 package controllers;
 
 import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import models.DatVe;
+import models.LichChieu;
 import models.Phim;
-import utils.PaneController;
+import models.Rap;
+import models.UserData;
 
-public class PhimCardController implements Initializable{
-	public static String FXML = "/views/items/PhimCard.fxml";
+public class PhimCardController extends AbstractController {
+	public static final String FXML = "/views/items/PhimCard.fxml";
 
-    @FXML
-    private ImageView imageview;
+	@FXML
+	private ImageView imageview;
 
-    @FXML
-    private Label tenphimLbl;
+	@FXML
+	private Label tenphimLbl;
 
-    @FXML
-    private Label theloaiLbl;
+	@FXML
+	private Label theloaiLbl;
 
-    @FXML
-    private Label thoiluongLbl;
-    
-    @FXML
-    private VBox root;
-    
-    private Phim phim;
+	@FXML
+	private Label thoiluongLbl;
+
+	@FXML
+	private VBox root;
+
+	private Phim phim;
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+	public void eventHandling() {
 		handleCardOnClicked();
 		handleCardHoverEffect();
-		
+	}
+
+	@Override
+	public void initView() {
+		// không cần thiết lập view ban đầu
 	}
 
 	private void handleCardOnClicked() {
 		root.setOnMouseClicked(event -> {
-			//TODO: 
-//			System.out.println(BanVeController.getInstance().mapSuatChieu.get(phim));
-			PaneController.getInstance().addPane(PaneController.getInstance().getRootPane(), DatVeController.FXML);
+			Phim bookingPhim = this.phim;
+			Rap selectedRap = BanVeController.getInstance().getSelectedRap();
+			String selectedNgayChieu = BanVeController.getInstance().getSelectedNgayChieu();
+			LichChieu bookingLichChieu = new LichChieu(selectedRap, selectedNgayChieu);
+			
+			DatVe datVe = new DatVe(bookingLichChieu, bookingPhim);
+			UserData.getInstance().putData("booking", datVe);
+
+			DatVeController.displayView();
 		});
 	}
 
 	private void handleCardHoverEffect() {
-		root.setOnMouseEntered(event -> {
-			root.setStyle("-fx-background-color: lightgray");
-		});
-		root.setOnMouseExited(event -> {
-			root.setStyle("-fx-background-color: #f0f0f0");
-		});
+		root.setOnMouseEntered(event -> root.setStyle("-fx-background-color: lightgray"));
+		root.setOnMouseExited(event -> root.setStyle("-fx-background-color: #f0f0f0"));
 	}
 
 	public void setData(Phim phim) {
 		this.phim = phim;
-		// set image
-		File file = new File(phim.getHinhAnh());
+		updateCardView();
+	}
+
+	private void updateCardView() {
+		setImage(phim.getHinhAnh());
+		setLabels(phim);
+	}
+
+	private void setImage(String imagePath) {
+		File file = new File(imagePath);
 		Image image = new Image(file.toURI().toString());
 		imageview.setImage(image);
-		
-		// set label
+	}
+
+	private void setLabels(Phim phim) {
 		tenphimLbl.setText(phim.getTenPhim());
 		theloaiLbl.setText(phim.getTheLoai());
-		thoiluongLbl.setText(phim.getThoiLuong()+" Phút");
+		thoiluongLbl.setText(phim.getThoiLuong() + " Phút");
 	}
-	
+
 }

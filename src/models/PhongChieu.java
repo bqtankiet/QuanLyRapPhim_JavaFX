@@ -95,4 +95,8 @@ public class PhongChieu {
                 Objects.equals(dsGhe, that.dsGhe);
     }
 	
+	@Override
+    public int hashCode() {
+        return Objects.hash(tenPhong, soHang, soDay, loaiPhong, dsGhe);
+    }
 }

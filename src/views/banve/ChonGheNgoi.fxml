@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox minWidth="1000.0" style="-fx-background-color: lightgray;" stylesheets="@datveStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChonGheNgoiController">
+   <children>
+      <AnchorPane>
+         <children>
+            <Label layoutY="7.0" style="-fx-font-weight: bold; -fx-font-size: 22; -fx-text-fill: #201c2c;" text="Bước 2: Chọn ghế" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="huyDatVeBtn" mnemonicParsing="false" prefWidth="100.0" styleClass="huy-dat-ve-button" text="Hủy đặt vé" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
+            <HBox alignment="CENTER" layoutX="68.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="step1Btn" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: #201c2c; -fx-text-fill: white;" text="01">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="100.0" stroke="#201c2c" strokeWidth="3.0" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: #201c2c; -fx-text-fill: white;" text="02">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="100.0" stroke="#a8a8a8" strokeWidth="3.0" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-color: a8a8a8; -fx-border-radius: 50; -fx-border-width: 3; -fx-text-fill: #201c2c;" text="03" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </AnchorPane>
+      <Separator>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Separator>
+      <ScrollPane fx:id="scrollPane" fitToWidth="true" VBox.vgrow="ALWAYS">
+         <content>
+            <HBox prefWidth="600.0">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="TOP_CENTER" spacing="30.0">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <Label style="-fx-font-size: 16; -fx-font-weight: bold;" text="Vui lòng chọn số lượng vé muốn đặt" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                 </padding>
+                              </Label>
+                              <VBox prefHeight="220.0" prefWidth="215.0" style="-fx-border-color: gray; -fx-border-radius: 15;">
+                                 <children>
+                                    <HBox alignment="CENTER" prefWidth="200.0" spacing="25.0">
+                                       <children>
+                                          <Label prefWidth="100.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="ADULT" wrapText="true" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="adultDecreaseBtn" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="–" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                                <TextField alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="0" style="-fx-background-color: white; -fx-font-size: 16; -fx-font-weight: bold;" />
+                                              <Button fx:id="adultIncreaseBtn" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="+" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER" disable="true" layoutX="31.0" layoutY="86.0" prefWidth="200.0" spacing="25.0">
+                                       <children>
+                                          <Label prefWidth="100.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="CHILDREN" wrapText="true" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="–" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                                <TextField alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="0" style="-fx-background-color: white; -fx-font-size: 16; -fx-font-weight: bold;" />
+                                                <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="+" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER" disable="true" layoutX="31.0" layoutY="31.0" prefWidth="200.0" spacing="25.0">
+                                       <children>
+                                          <Label prefWidth="100.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="STUDENT" wrapText="true" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="–" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                                <TextField alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="0" style="-fx-background-color: white; -fx-font-size: 16; -fx-font-weight: bold;" />
+                                                <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="+" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER" disable="true" layoutX="31.0" layoutY="141.0" prefWidth="200.0" spacing="25.0">
+                                       <children>
+                                          <Label prefWidth="100.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="MEMBER" wrapText="true" />
+                                          <HBox alignment="CENTER">
+                                             <children>
+                                                <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="–" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                                <TextField alignment="CENTER" prefHeight="35.0" prefWidth="50.0" promptText="0" style="-fx-background-color: white; -fx-font-size: 16; -fx-font-weight: bold;" />
+                                                <Button alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" styleClass="decrease-increase-button" text="+" textAlignment="CENTER">
+                                                   <padding>
+                                                      <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+                                                   </padding>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="100.0" styleClass="huy-dat-ve-button" text="Xác nhận" fx:id="xacNhanBtn" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

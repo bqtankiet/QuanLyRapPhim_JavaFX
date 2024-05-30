@@ -4,11 +4,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -26,127 +25,116 @@ import models.LichChieu;
 import models.Phim;
 import models.Rap;
 import models.SuatChieu;
-import storage.StorageLichChieu;
 import storage.StorageRap;
+import storage.StorageSuatChieu;
 
-public class BanVeController implements Initializable {
-	public static String FXML = "/views/banve/banve.fxml";
-	private static BanVeController instance;
-	public static BanVeController getInstance() {
-		return instance;
-	}
-	
-	@FXML
-	private Button chapNhanBtn;
+public class BanVeController extends AbstractController {
+    public static final String FXML = "/views/banve/banve.fxml";
+    private static BanVeController instance;
 
-	@FXML
-	private DatePicker ngayChieuDatepicker;
+    public static BanVeController getInstance() {
+        return instance;
+    }
 
-	@FXML
-	private ChoiceBox<Rap> rapChoicebox;
+    @FXML
+    private Button chapNhanBtn;
 
-	@FXML
-	private AnchorPane rootPane;
+    @FXML
+    private DatePicker ngayChieuDatepicker;
 
-	@FXML
-	private AnchorPane scrollAnchorPane;
+    @FXML
+    private ChoiceBox<Rap> rapChoicebox;
 
-	@FXML
-	private ScrollPane scrollpane;
+    @FXML
+    private AnchorPane rootPane;
 
-	@FXML
-	private Button themSuatChieuBtn;
+    @FXML
+    private AnchorPane scrollAnchorPane;
 
-	@FXML
-	private FlowPane cardLayout;
+    @FXML
+    private ScrollPane scrollpane;
 
-	public HashMap<Phim, ArrayList<SuatChieu>> mapSuatChieu;
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		instance = this;
-		setupDatePicker();
-		setupRapChoiceBox();
-//		setupPhimCards();
-		handleChapNhanBtnAction();
-		loadAvailablePhimCards();
-	}
+    @FXML
+    private Button themSuatChieuBtn;
 
-	private void loadAvailablePhimCards() {
-		// clear card layout
-		cardLayout.getChildren().clear();
-		// lay ra ds cac phim co suat chieu dang co
-		mapSuatChieu = new HashMap<>();
-		for (LichChieu lichchieu : StorageLichChieu.data) {
-			// duyet qua cac lich chieu co cung rap va ngay
-			if (lichchieu.getRap().equals(getSelectedRap())
-					&& lichchieu.getNgaychieu().equals(getSelectedNgayChieu())) {
-				for (SuatChieu sc : lichchieu.getDsSuatChieu()) {
-					ArrayList<SuatChieu> listSuatChieu = mapSuatChieu.get(sc.getPhim());
-					if(listSuatChieu == null) {
-						listSuatChieu = new ArrayList<>();
-						mapSuatChieu.put(sc.getPhim(), listSuatChieu);
-					}
-					listSuatChieu.add(sc);
-				}
-			}
-		}
-		// neu khong co suat chieu nao thi return
-		if (mapSuatChieu.isEmpty())
-			return;
-		// them phimcard vao cardlayout
-		Set<Phim> setPhim = mapSuatChieu.keySet();
-		addPhimCards(setPhim);
-	}
+    @FXML
+    private FlowPane cardLayout;
 
-	private void addPhimCards(Collection<Phim> setPhim) {
-		try {
-			cardLayout.getChildren().clear();
-			for (Phim phim : setPhim) {
-				FXMLLoader fxmlLoader = new FXMLLoader();
-				fxmlLoader.setLocation(getClass().getResource(PhimCardController.FXML));
-				VBox phimCard = fxmlLoader.load();
-				PhimCardController cardController = fxmlLoader.getController();
-				cardController.setData(phim);
-				cardLayout.getChildren().add(phimCard);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+    @Override
+    public void initView() {
+        instance = this;
+    	loadAvailablePhimCards();
+    	initDatePicker();
+    	initRapChoiceBox();
+    }
+    
+    @Override
+    public void eventHandling() {
+    	handleChapNhanBtnAction();
+    }
 
-	private Rap getSelectedRap() {
-		return rapChoicebox.getSelectionModel().getSelectedItem();
-	}
+    private void loadAvailablePhimCards() {
+        cardLayout.getChildren().clear();
 
-	private String getSelectedNgayChieu() {
-		return ngayChieuDatepicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-	}
+        LichChieu lc = new LichChieu(getSelectedRap(), getSelectedNgayChieu());
+        Set<SuatChieu> listSC = StorageSuatChieu.data.getOrDefault(lc, new HashSet<>());
 
-	private void setupDatePicker() {
-		ngayChieuDatepicker.setValue(LocalDate.now());
-	}
+        Set<Phim> setPhim = listSC.stream()
+                                  .map(SuatChieu::getPhim)
+                                  .collect(Collectors.toSet());
 
-	private void setupRapChoiceBox() {
-		rapChoicebox.setItems(FXCollections.observableArrayList(StorageRap.data));
-		rapChoicebox.setConverter(new StringConverter<Rap>() {
-			@Override
-			public String toString(Rap rap) {
-				return rap != null ? rap.getTenRap() : "";
-			}
+        if (!setPhim.isEmpty()) {
+            addPhimCards(setPhim);
+        }
+    }
 
-			@Override
-			public Rap fromString(String string) {
-				return null; // not implemented
-			}
-		});
-		rapChoicebox.getSelectionModel().selectFirst();
-	}
+    private void addPhimCards(Set<Phim> setPhim) {
+        cardLayout.getChildren().clear();
 
-	private void handleChapNhanBtnAction() {
-		chapNhanBtn.setOnAction(event -> {
-			// TODO: xu ly su kien khi nhan vao button
-			loadAvailablePhimCards();
-		});
-	}
+        for (Phim phim : setPhim) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(PhimCardController.FXML));
+                VBox phimCard = fxmlLoader.load();
+                PhimCardController cardController = fxmlLoader.getController();
+                cardController.setData(phim);
+                cardLayout.getChildren().add(phimCard);
+            } catch (IOException e) {
+            	e.printStackTrace();
+            }
+        }
+    }
+
+    public Rap getSelectedRap() {
+        return rapChoicebox.getSelectionModel().getSelectedItem();
+    }
+
+    public String getSelectedNgayChieu() {
+        LocalDate selectedDate = ngayChieuDatepicker.getValue();
+        return selectedDate != null ? selectedDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "";
+    }
+
+    private void initDatePicker() {
+        ngayChieuDatepicker.setValue(LocalDate.now());
+    }
+
+    private void initRapChoiceBox() {
+        rapChoicebox.setItems(FXCollections.observableArrayList(StorageRap.data));
+
+        rapChoicebox.setConverter(new StringConverter<>() {
+            @Override
+            public String toString(Rap rap) {
+                return rap != null ? rap.getTenRap() : "";
+            }
+
+            @Override
+            public Rap fromString(String string) {
+                throw new UnsupportedOperationException("Conversion from String to Rap is not supported");
+            }
+        });
+        rapChoicebox.getSelectionModel().selectFirst();
+    }
+
+    private void handleChapNhanBtnAction() {
+        chapNhanBtn.setOnAction(event -> loadAvailablePhimCards());
+    }
 }

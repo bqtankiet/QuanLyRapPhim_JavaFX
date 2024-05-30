@@ -15,7 +15,6 @@ public class Ghe {
 		this.loaiGhe = loaiGhe;
 	}
 
-	// ###### GETTER, SETTER ##########
 	public char getHang() {
 		return hang;
 	}
@@ -39,21 +38,28 @@ public class Ghe {
 	public void setLoaiGhe(LoaiGhe loaiGhe) {
 		this.loaiGhe = loaiGhe;
 	}
-	// ###### END GETTER, SETTER ##########
 
 	@Override
 	public String toString() {
 		return ""+hang+day;
 	}
 	
-	 @Override
-	    public boolean equals(Object o) {
-	        if (this == o) return true;
-	        if (o == null || getClass() != o.getClass()) return false;
-	        Ghe ghe = (Ghe) o;
-	        return hang == ghe.hang &&
-	                day == ghe.day &&
-	                loaiGhe == ghe.loaiGhe;
-	    }
+	@Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Ghe ghe = (Ghe) obj;
+        return hang == ghe.hang && day == ghe.day;
+    }
 	
+	@Override
+    public int hashCode() {
+        int result = Character.hashCode(hang);
+        result = 31 * result + Integer.hashCode(day);
+        return result;
+    }
 }

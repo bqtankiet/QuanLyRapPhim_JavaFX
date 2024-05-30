@@ -3,6 +3,7 @@ package controllers;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -23,8 +24,8 @@ import models.LichChieu;
 import models.PhongChieu;
 import models.Rap;
 import models.SuatChieu;
-import storage.StorageLichChieu;
 import storage.StorageRap;
+import storage.StorageSuatChieu;
 import utils.PaneController;
 
 public class SuatChieuController implements Initializable {
@@ -79,7 +80,7 @@ public class SuatChieuController implements Initializable {
 
 	public void setupAccordion(Rap selectedRap) {
 		for (PhongChieu phong : selectedRap.getDsPhongChieu()) {
-			DSSuatChieuPane pane = new DSSuatChieuPane(phong);
+			new DSSuatChieuPane(phong);
 		}
 	}
 
@@ -144,19 +145,20 @@ public class SuatChieuController implements Initializable {
 			colThoiGian.setPrefWidth(150);
 			colThoiGian.setResizable(false);
 			colThoiGian.setCellValueFactory(new PropertyValueFactory<>("thoigian"));
-			
+
 			colTenPhim = new TableColumn<>("Tên phim");
-		    colTenPhim.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPhim().getTenPhim()));
-			
+			colTenPhim.setCellValueFactory(
+					cellData -> new SimpleStringProperty(cellData.getValue().getPhim().getTenPhim()));
+
 			colPhuDe = new TableColumn<>("Phụ đề");
 			colPhuDe.setPrefWidth(150);
 			colPhuDe.setResizable(false);
-		    colPhuDe.setCellValueFactory(new PropertyValueFactory<>("phude"));
-			
+			colPhuDe.setCellValueFactory(new PropertyValueFactory<>("phude"));
+
 			colTrangThai = new TableColumn<>("Trạng thái");
 			colTrangThai.setPrefWidth(150);
 			colTrangThai.setResizable(false);
-		    colTrangThai.setCellValueFactory(new PropertyValueFactory<>("trangthai"));
+			colTrangThai.setCellValueFactory(new PropertyValueFactory<>("trangthai"));
 
 			// Initialize TableView
 			tableView = new TableView<>();
@@ -184,12 +186,17 @@ public class SuatChieuController implements Initializable {
 			Rap rap = getSelectedRap();
 			LocalDate date = getSelectedDate();
 			String ngayChieu = date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-			
-			LichChieu lichChieu = new LichChieu(rap, phongChieu, ngayChieu);
+
+			LichChieu lichChieu = new LichChieu(rap, ngayChieu);
 //			System.out.println(StorageLichChieu.getLichChieu(lichChieu));
-			lichChieu = StorageLichChieu.getLichChieu(lichChieu);
-			if(lichChieu == null) return;
-			tableView.getItems().setAll(FXCollections.observableArrayList(lichChieu.getDsSuatChieu()));
+			HashSet<SuatChieu> setSC = StorageSuatChieu.data.get(lichChieu);
+			if (setSC == null)
+				return;
+			for (SuatChieu sc : setSC) {
+				if (sc.getPhong().equals(phongChieu)) {
+					tableView.getItems().add(sc);
+				}
+			}
 		}
 	}
 

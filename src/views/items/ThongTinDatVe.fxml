@@ -31,7 +31,7 @@
       <HBox prefHeight="17.0" prefWidth="189.0" spacing="5.0" style="-fx-font-size: 14;">
          <children>
             <Label style="-fx-text-fill: white;" text="Phim:" />
-            <Label fx:id="tenPhimLbl" maxWidth="150.0" prefWidth="150.0" style="-fx-text-fill: white; -fx-font-weight: Bold;" text="MAI" />
+            <Label fx:id="tenPhimLbl" style="-fx-text-fill: white; -fx-font-weight: Bold;" text="MAI" />
          </children>
          <VBox.margin>
             <Insets />
