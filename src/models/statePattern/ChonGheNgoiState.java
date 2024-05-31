@@ -1,6 +1,7 @@
 package models.statePattern;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import controllers.ChonGheNgoiController;
 import controllers.DatVeController;
@@ -32,6 +33,8 @@ public class ChonGheNgoiState implements StateDatVe {
 		SuatChieu sc = (SuatChieu) UserData.getInstance().getData("bookingSuatChieu");
 		datVe.setBookingSuatChieu(sc);
 		datVe.setLoaiKhachHang(LoaiKhachHang.ADULT);
+		datVe.setBookingGhe(new ArrayList<>());
+		datVe.setSlVe(0);
 	}
 
 	private void updateThongTinVe() {
@@ -39,6 +42,9 @@ public class ChonGheNgoiState implements StateDatVe {
 		thongTinVeController.getThoiGianLbl().setText(datVe.getBookingSuatChieu().getThoigian());
 		thongTinVeController.getTenPhongLbl().setText(datVe.getBookingSuatChieu().getPhong().getTenPhong());
 		thongTinVeController.getPhuDeLbl().setText(datVe.getBookingSuatChieu().getPhude());
+		thongTinVeController.getSoLuongVeLbl().setText("---");
+		thongTinVeController.getGheLbl().setText("---");
+		thongTinVeController.getTongTienLbl().setText("---");
 	}
 
 	private void loadChonGheNgoiView() {

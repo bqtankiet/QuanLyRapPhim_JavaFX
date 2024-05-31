@@ -10,6 +10,26 @@
     -fx-font-weight: bold;
 }
 
+.title {
+	-fx-font-size: 20.0px;
+    -fx-font-weight: bold;
+}
+
+.thanh-toan-item{
+	-fx-background-color: lightgray;
+    -fx-font-size: 20.0px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15.0px;
+    -fx-pref-height: 65.0px;
+}
+
+.thanh-toan-item:hover {
+	-fx-background-color: #8f8fff;
+    -fx-font-size: 20.0px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
 .huy-dat-ve-button{
     -fx-font-size: 14.0;
     -fx-font-weight: bold;
@@ -28,8 +48,8 @@
 }
 
 .decrease-increase-button {
-	-fx-font-size: 30;
+	-fx-font-size: 30.0;
 	-fx-font-weight: bold;
 	-fx-background-color: lightgray;
-	-fx-border-radius: 0;
+	-fx-border-radius: 0.0;
 }

@@ -18,7 +18,6 @@ import javafx.scene.layout.HBox;
 import models.DatVe;
 import models.Ghe;
 import models.PhongChieu;
-import models.VeXemPhim;
 import models.enums.LoaiGhe;
 import utils.AlertDialog;
 import utils.Helper;
@@ -114,8 +113,7 @@ public class ChonGheNgoiController extends AbstractController {
 	}
 	
 	private void handleXacNhanDatVe() {
-		VeXemPhim veXemPhim = datVe.createVeXemPhim();
-		System.out.println(veXemPhim);
+		DatVeController.getInstance().nextStep();
 	}
 
 	private class GheButton extends Button {
@@ -137,16 +135,18 @@ public class ChonGheNgoiController extends AbstractController {
 
 		private void handleOnClick() {
 			toggleSeatSelection();
-			updateXacNhanDatVeState();
 			updateThongTinVe();
+			updateXacNhanDatVeButton();
 		}
 
 		private void updateThongTinVe() {
 			ThongTinVeController controller = DatVeController.getInstance().getThongTinVeController();
 			controller.getTongTienLbl().setText(Helper.convertNumberFormat(datVe.getCurrentTotalPrice()));
+			String bookingGheLbl = datVe.getBookingGhe().toString();
+			controller.getGheLbl().setText(bookingGheLbl.substring(1,bookingGheLbl.length()-1));
 		}
 
-		private void updateXacNhanDatVeState() {
+		private void updateXacNhanDatVeButton() {
 			boolean datGioiHan = slGheDaChon >= datVe.getSlVe();
 			if (datGioiHan)
 				xacNhanDatVe.setVisible(true);

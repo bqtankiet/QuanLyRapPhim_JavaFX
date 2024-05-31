@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox minWidth="1000.0" style="-fx-background-color: lightgray;" stylesheets="@datveStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ThanhToanController">
+   <children>
+      <AnchorPane>
+         <children>
+            <Label layoutY="7.0" style="-fx-font-weight: bold; -fx-font-size: 22; -fx-text-fill: #201c2c;" text="Bước 3: Thanh Toán" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="huyDatVeBtn" mnemonicParsing="false" prefWidth="100.0" styleClass="huy-dat-ve-button" text="Hủy đặt vé" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
+            <HBox alignment="CENTER" layoutX="68.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="step1Btn" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: #201c2c; -fx-text-fill: white;" text="01">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="100.0" stroke="#201c2c" strokeWidth="3.0" />
+                  <Button fx:id="step2Btn" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: #201c2c; -fx-text-fill: white;" text="02">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="100.0" layoutX="272.0" layoutY="33.0" stroke="#201c2c" strokeWidth="3.0" />
+                  <Button layoutX="373.0" layoutY="10.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: #201c2c; -fx-text-fill: white;" text="03">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </AnchorPane>
+      <Separator>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Separator>
+      <AnchorPane fx:id="mainPane" style="-fx-background-color: #f4f4f4;" VBox.vgrow="ALWAYS">
+         <children>
+            <AnchorPane prefHeight="500.0" stylesheets="@datveStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="title" text="Chọn hình thức thanh toán" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </Label>
+                  <VBox alignment="CENTER" layoutX="201.0" layoutY="85.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox fx:id="cashPayment" alignment="CENTER_LEFT" layoutX="35.0" layoutY="228.0" spacing="10.0" styleClass="thanh-toan-item">
+                           <children>
+                              <Label text="Thanh toán bằng tiền mặt" />
+                              <ImageView fx:id="cashImage" fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resource/images/cash-payment.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="vnpayPayment" alignment="CENTER_LEFT" styleClass="thanh-toan-item">
+                           <children>
+                              <Label text="Thanh toán chuyển khoản " />
+                              <ImageView fx:id="vnpayImage" fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resource/images/vnpay-payment.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                     </padding>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

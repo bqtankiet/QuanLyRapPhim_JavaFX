@@ -1,13 +1,11 @@
 package controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import models.DatVe;
-import models.UserData;
 import models.statePattern.ChonGheNgoiState;
 import models.statePattern.ChonSuatChieuState;
 import models.statePattern.StateDatVe;
@@ -55,6 +53,8 @@ public class DatVeController extends AbstractController {
 	public void nextStep() {
 		if (currentState instanceof ChonSuatChieuState) {
 			currentState = new ChonGheNgoiState(this);
+		} else if (currentState instanceof ChonGheNgoiState) {
+			currentState = new ThanhToanState(this);
 		}
 		currentState.handleStep();
 	}
@@ -68,8 +68,13 @@ public class DatVeController extends AbstractController {
 	}
 
 	public void goBackStep1() {
-		stepDatVeArea.getChildren().clear();
+//		stepDatVeArea.getChildren().clear();
 		currentState = new ChonSuatChieuState(this);
+		currentState.handleStep();
+	}
+	
+	public void goBackStep2() {
+		currentState = new ChonGheNgoiState(this);
 		currentState.handleStep();
 	}
 
