@@ -58,19 +58,19 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="15.0">
                                  <children>
-                                    <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+                                    <Button fx:id="gheThuong" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dbdbdb;" />
                                     <Label text="Ghế Thường" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" spacing="15.0">
                                  <children>
-                                    <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+                                    <Button fx:id="gheVIP" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #ff5e5e;" />
                                     <Label text="Ghế VIP" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" spacing="15.0">
                                  <children>
-                                    <Button minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" />
+                                    <Button fx:id="gheCouple" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #ff5985;" />
                                     <Label text="Ghế Couple" />
                                  </children>
                               </HBox>

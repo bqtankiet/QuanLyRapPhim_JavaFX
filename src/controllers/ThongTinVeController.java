@@ -72,12 +72,6 @@ public class ThongTinVeController extends AbstractController {
 		imageView.setImage(null);
 	}
 
-	public void updateThongTin(VeXemPhim veXemPhim) {
-		thoiGianLbl.setText(veXemPhim.getThoiGianChieu());
-		tenPhongLbl.setText(veXemPhim.getTenPhong());
-		phuDeLbl.setText(veXemPhim.getPhuDe());
-	}
-
 	public Label getGheLbl() {
 		return gheLbl;
 	}

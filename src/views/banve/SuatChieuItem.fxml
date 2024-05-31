@@ -16,10 +16,10 @@
          </children>
       </HBox>
       <Button fx:id="thoiGian" mnemonicParsing="false" style="-fx-background-color: darkgray;" text="17:00" />
-      <Label fx:id="tenPhong" layoutX="79.0" layoutY="10.0" text="Phong 01" />
+      <Label fx:id="tenPhong" layoutX="79.0" layoutY="10.0" prefWidth="100.0" text="Phong 01" />
       <HBox alignment="BOTTOM_LEFT" spacing="5.0">
          <children>
-            <HBox alignment="CENTER_LEFT" spacing="2.0">
+            <HBox alignment="CENTER_LEFT" prefWidth="120.0" spacing="2.0">
                <children>
                   <Label fx:id="soGheConTrong" text="90" />
                   <Label text="/" />

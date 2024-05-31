@@ -10,25 +10,34 @@ public class VeXemPhim {
 	private SuatChieu suatChieu;
 	private ArrayList<Ghe> listGhe;
 	private HashMap<LoaiKhachHang, Integer> soLuongVe;
-	
+
 	public VeXemPhim(SuatChieu suatChieu) {
 		this.suatChieu = suatChieu;
+		soLuongVe = new HashMap<LoaiKhachHang, Integer>();
 	}
-	
+
 	public String getThoiGianChieu() {
-		return suatChieu.getThoigian();
+		if(suatChieu == null) return "";
+		String result = suatChieu.getThoigian();
+		return result == null ? "" : result;
 	}
-	
+
 	public String getTenPhim() {
-		return suatChieu.getPhim().getTenPhim();
+		if(suatChieu == null) return "";
+		String result = suatChieu.getPhim().getTenPhim();
+		return result == null ? "" : result;
 	}
-	
+
 	public String getTenPhong() {
-		return suatChieu.getPhong().getTenPhong();
+		if(suatChieu == null) return "";
+		String result = suatChieu.getPhong().getTenPhong();
+		return result == null ? "" : result;
 	}
 
 	public String getPhuDe() {
-		return suatChieu.getPhude();
+		if(suatChieu == null) return "";
+		String result = suatChieu.getPhude();
+		return result == null ? "" : result;
 	}
 
 	public String getMaVe() {
@@ -48,24 +57,23 @@ public class VeXemPhim {
 	}
 
 	public String getThoiGian() {
-		return this.suatChieu.getThoigian();
+		String result = this.suatChieu.getThoigian();
+		return result == null ? "" : result;
 	}
-	
-	public ArrayList<Ghe> getListGhe() {
-		return listGhe;
-	}
+
 
 	public void setListGhe(ArrayList<Ghe> listGhe) {
 		this.listGhe = listGhe;
 	}
 
-	public HashMap<LoaiKhachHang, Integer> getSoLuongVe() {
-		return soLuongVe;
+
+	public void setSoLuongVe(LoaiKhachHang khachHang, int soLuongVe) {
+		this.soLuongVe.put(khachHang, soLuongVe);
+	}
+	
+	public int getSoLuongVe(LoaiKhachHang khachHang) {
+		return soLuongVe.get(khachHang);
 	}
 
-	public void setSoLuongVe(HashMap<LoaiKhachHang, Integer> soLuongVe) {
-		this.soLuongVe = soLuongVe;
-	}
-	
-	
+
 }

@@ -15,13 +15,13 @@ public class StorageRap {
 	static {
 		Rap rap;
 		rap = new Rap("CGV Thu Duc", "Tầng 5, Vincom Thủ Đức, 216 Võ Văn Ngân, Phường Bình Thọ, Quận Thủ Đức");
-		rap.themPhongChieu(new PhongChieu("Phong 01", LoaiPhong.PHONG_2D, 12, 8));
-		rap.themPhongChieu(new PhongChieu("Phong 02", LoaiPhong.PHONG_2D, 12, 8));
+		rap.themPhongChieu(new PhongChieu("Phong 01", LoaiPhong.PHONG_2D, 8, 12));
+		rap.themPhongChieu(new PhongChieu("Phong 02", LoaiPhong.PHONG_2D, 8, 12));
 		data.add(rap);
 		
 		rap = new Rap("CGV Bien Hoa", "Tầng 3, Khu Siêu thị Co-op Mart 121 Phạm Văn Thuận, P.Tân Tiến Tp. Biên Hoà Tỉnh Đồng Nai.");
-		rap.themPhongChieu(new PhongChieu("Phong 01", LoaiPhong.PHONG_2D, 15, 10));
-		rap.themPhongChieu(new PhongChieu("Phong 02", LoaiPhong.PHONG_3D, 12, 8));
+		rap.themPhongChieu(new PhongChieu("Phong 01", LoaiPhong.PHONG_2D, 10, 15));
+		rap.themPhongChieu(new PhongChieu("Phong 02", LoaiPhong.PHONG_3D, 8, 12));
 		data.add(rap);
 	}
 	
