@@ -110,7 +110,7 @@
                                           <Insets right="2.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="85.000" wrapText="true" />
+                                    <Label fx:id="priceTHUONG" text="85.000" wrapText="true" />
                                     <Label text="₫" />
                                  </children>
                               </HBox>
@@ -126,7 +126,7 @@
                                           <Insets right="2.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="85.000" />
+                                    <Label fx:id="priceVIP" text="85.000" />
                                     <Label text="₫" />
                                  </children>
                               </HBox>
@@ -142,7 +142,7 @@
                                           <Insets right="2.0" />
                                        </padding>
                                     </Label>
-                                    <Label text="85.000" />
+                                    <Label fx:id="priceCOUPLE" text="85.000" />
                                     <Label text="₫" />
                                  </children>
                               </HBox>

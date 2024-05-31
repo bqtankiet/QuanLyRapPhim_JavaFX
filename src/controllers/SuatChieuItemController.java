@@ -46,7 +46,7 @@ public class SuatChieuItemController extends AbstractController {
 
 	private void handleOnClick() {
 		root.setOnMouseClicked(event -> {
-			DatVeController.getInstance().getDatVe().setSuatChieu(suatChieu);
+			UserData.getInstance().putData("bookingSuatChieu", suatChieu);
 			DatVeController.getInstance().nextStep();
 		});
 	}

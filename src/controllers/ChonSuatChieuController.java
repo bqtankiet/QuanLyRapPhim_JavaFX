@@ -40,7 +40,7 @@ public class ChonSuatChieuController extends AbstractController {
 		
 		scItemsContainer.getChildren().clear();
 		// load and render cac suat chieu dang co
-		DatVe datVe = (DatVe) UserData.getInstance().getData("booking");
+		DatVe datVe = DatVeController.getInstance().getDatVe();
 		loadSuatChieuItems(datVe.getAvailabeSuatChieu());
 	}
 

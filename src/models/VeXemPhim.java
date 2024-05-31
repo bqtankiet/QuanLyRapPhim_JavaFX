@@ -1,43 +1,17 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 
 import models.enums.LoaiKhachHang;
 
 public class VeXemPhim {
 	private String maVe;
 	private SuatChieu suatChieu;
-	private ArrayList<Ghe> listGhe;
-	private HashMap<LoaiKhachHang, Integer> soLuongVe;
+	private List<Ghe> bookingGhe;
+	private LoaiKhachHang loaiKhachHang;
+	private int tongTien;
 
-	public VeXemPhim(SuatChieu suatChieu) {
-		this.suatChieu = suatChieu;
-		soLuongVe = new HashMap<LoaiKhachHang, Integer>();
-	}
-
-	public String getThoiGianChieu() {
-		if(suatChieu == null) return "";
-		String result = suatChieu.getThoigian();
-		return result == null ? "" : result;
-	}
-
-	public String getTenPhim() {
-		if(suatChieu == null) return "";
-		String result = suatChieu.getPhim().getTenPhim();
-		return result == null ? "" : result;
-	}
-
-	public String getTenPhong() {
-		if(suatChieu == null) return "";
-		String result = suatChieu.getPhong().getTenPhong();
-		return result == null ? "" : result;
-	}
-
-	public String getPhuDe() {
-		if(suatChieu == null) return "";
-		String result = suatChieu.getPhude();
-		return result == null ? "" : result;
+	public VeXemPhim() {
 	}
 
 	public String getMaVe() {
@@ -56,24 +30,39 @@ public class VeXemPhim {
 		this.suatChieu = suatChieu;
 	}
 
-	public String getThoiGian() {
-		String result = this.suatChieu.getThoigian();
-		return result == null ? "" : result;
+	public List<Ghe> getBookingGhe() {
+		return bookingGhe;
 	}
 
-
-	public void setListGhe(ArrayList<Ghe> listGhe) {
-		this.listGhe = listGhe;
+	public void setBookingGhe(List<Ghe> bookingGhe) {
+		this.bookingGhe = bookingGhe;
 	}
 
-
-	public void setSoLuongVe(LoaiKhachHang khachHang, int soLuongVe) {
-		this.soLuongVe.put(khachHang, soLuongVe);
+	public LoaiKhachHang getLoaiKhachHang() {
+		return loaiKhachHang;
 	}
+
+	public void setLoaiKhachHang(LoaiKhachHang loaiKhachHang) {
+		this.loaiKhachHang = loaiKhachHang;
+	}
+
+	public int getTongTien() {
+		return tongTien;
+	}
+
+	public void setTongTien(int tongTien) {
+		this.tongTien = tongTien;
+	}
+
+	@Override
+	public String toString() {
+	    return "VeXemPhim Information:\n" +
+	            "Ma Ve: " + maVe + "\n" +
+	            "Suat Chieu: " + suatChieu + "\n" +
+	            "Booking Ghe: " + bookingGhe + "\n" +
+	            "Loai KhachHang: " + loaiKhachHang + "\n" +
+	            "Tong Tien: " + tongTien;
+	}
+
 	
-	public int getSoLuongVe(LoaiKhachHang khachHang) {
-		return soLuongVe.get(khachHang);
-	}
-
-
 }

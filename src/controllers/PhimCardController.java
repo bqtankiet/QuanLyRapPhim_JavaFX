@@ -46,14 +46,7 @@ public class PhimCardController extends AbstractController {
 
 	private void handleCardOnClicked() {
 		root.setOnMouseClicked(event -> {
-			Phim bookingPhim = this.phim;
-			Rap selectedRap = BanVeController.getInstance().getSelectedRap();
-			String selectedNgayChieu = BanVeController.getInstance().getSelectedNgayChieu();
-			LichChieu bookingLichChieu = new LichChieu(selectedRap, selectedNgayChieu);
-			
-			DatVe datVe = new DatVe(bookingLichChieu, bookingPhim);
-			UserData.getInstance().putData("booking", datVe);
-
+			UserData.getInstance().putData("bookingPhim", phim);
 			DatVeController.displayView();
 		});
 	}

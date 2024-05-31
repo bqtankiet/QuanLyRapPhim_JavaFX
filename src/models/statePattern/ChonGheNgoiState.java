@@ -7,36 +7,47 @@ import controllers.DatVeController;
 import controllers.ThongTinVeController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
+import models.DatVe;
+import models.SuatChieu;
+import models.UserData;
+import models.enums.LoaiKhachHang;
 
 public class ChonGheNgoiState implements StateDatVe {
-    private DatVeController context;
+	private DatVeController context;
+	private DatVe datVe;
 
-    public ChonGheNgoiState(DatVeController context) {
-        this.context = context;
-    }
+	public ChonGheNgoiState(DatVeController context) {
+		this.context = context;
+		this.datVe = context.getDatVe();
+	}
 
-    @Override
-    public void handleStep() {
-        updateThongTinVe();
-        loadChonGheNgoiView();
-    }
+	@Override
+	public void handleStep() {
+		updateBookingData();
+		updateThongTinVe();
+		loadChonGheNgoiView();
+	}
 
-    private void updateThongTinVe() {
-        ThongTinVeController thongTinVeController = context.getThongTinVeController();
-        var veXemPhim = context.getDatVe().getVeXemPhim();
-        
-        thongTinVeController.getThoiGianLbl().setText(veXemPhim.getThoiGian());
-        thongTinVeController.getTenPhongLbl().setText(veXemPhim.getTenPhong());
-        thongTinVeController.getPhuDeLbl().setText(veXemPhim.getPhuDe());
-    }
+	private void updateBookingData() {
+		SuatChieu sc = (SuatChieu) UserData.getInstance().getData("bookingSuatChieu");
+		datVe.setBookingSuatChieu(sc);
+		datVe.setLoaiKhachHang(LoaiKhachHang.ADULT);
+	}
 
-    private void loadChonGheNgoiView() {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ChonGheNgoiController.FXML));
-            VBox chonGheNgoi = fxmlLoader.load();
-            context.getStepDatVeArea().getChildren().add(chonGheNgoi);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	private void updateThongTinVe() {
+		ThongTinVeController thongTinVeController = context.getThongTinVeController();
+		thongTinVeController.getThoiGianLbl().setText(datVe.getBookingSuatChieu().getThoigian());
+		thongTinVeController.getTenPhongLbl().setText(datVe.getBookingSuatChieu().getPhong().getTenPhong());
+		thongTinVeController.getPhuDeLbl().setText(datVe.getBookingSuatChieu().getPhude());
+	}
+
+	private void loadChonGheNgoiView() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ChonGheNgoiController.FXML));
+			VBox chonGheNgoi = fxmlLoader.load();
+			context.getStepDatVeArea().getChildren().add(chonGheNgoi);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

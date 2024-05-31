@@ -13,7 +13,7 @@ import models.enums.LoaiKhachHang;
 
 public class ChonSoLuongVeController extends AbstractController {
 	public static final String FXML = "/views/banve/ChonSoLuongVe.fxml";
-	private int numOfAdult = 0;
+	private int numOfTicket = 0;
 	private DatVe datVe;
 
 	@FXML
@@ -63,23 +63,24 @@ public class ChonSoLuongVeController extends AbstractController {
 	}
 
 	private void incrementAdultNum() {
-		numOfAdult = parseTextField(adultNumField.getText());
-		numOfAdult++;
-		adultNumField.setText(String.valueOf(numOfAdult));
+		numOfTicket = parseTextField(adultNumField.getText());
+		numOfTicket++;
+		adultNumField.setText(String.valueOf(numOfTicket));
 		updateSoLuongVe();
 	}
 
 	private void updateSoLuongVe() {
+		LoaiKhachHang khachHang = datVe.getLoaiKhachHang();
 		ThongTinVeController controller = DatVeController.getInstance().getThongTinVeController();
-		controller.getSoLuongVeLbl().setText(numOfAdult == 0 ? "" : "Adult x" + numOfAdult);
-		datVe.setSoLuongVe(LoaiKhachHang.ADULT, numOfAdult);
+		controller.getSoLuongVeLbl().setText(numOfTicket == 0 ? "" : khachHang+" x" + numOfTicket);
+		datVe.setSlVe(numOfTicket);
 	}
 
 	private void decrementAdultNum() {
-		numOfAdult = parseTextField(adultNumField.getText());
-		if (numOfAdult > 0) {
-			numOfAdult--;
-			adultNumField.setText(String.valueOf(numOfAdult));
+		numOfTicket = parseTextField(adultNumField.getText());
+		if (numOfTicket > 0) {
+			numOfTicket--;
+			adultNumField.setText(String.valueOf(numOfTicket));
 			updateSoLuongVe();
 		}
 	}

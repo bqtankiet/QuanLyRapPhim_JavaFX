@@ -48,7 +48,6 @@ public class DatVeController extends AbstractController {
 	@Override
 	public void initView() {
 		instance = this;
-		this.datVe = (DatVe) UserData.getInstance().getData("booking");
 		setCurrentState(new ChonSuatChieuState(this));
 		currentState.handleStep();
 	}
