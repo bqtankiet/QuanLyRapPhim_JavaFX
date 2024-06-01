@@ -63,11 +63,11 @@ public class ChonGheNgoiController extends AbstractController {
 		String ngayChieu = datVe.getBookingSuatChieu().getLichChieu().getNgaychieu();
 		boolean isWeekend = Helper.isWeekend(ngayChieu);
 		price = Helper.getGiaVe(datVe.getLoaiKhachHang(), isWeekend);
-		priceTHUONG.setText(Helper.convertNumberFormat(price));
+		priceTHUONG.setText(Helper.formatNumber(price));
 		price = Helper.getGiaVe(datVe.getLoaiKhachHang(), PHUTHU_GHEVIP, isWeekend);
-		priceVIP.setText(Helper.convertNumberFormat(price));
+		priceVIP.setText(Helper.formatNumber(price));
 		price = Helper.getGiaVe(datVe.getLoaiKhachHang(), PHUTHU_GHECOUPLE, isWeekend);
-		priceCOUPLE.setText(Helper.convertNumberFormat(price));
+		priceCOUPLE.setText(Helper.formatNumber(price));
 	}
 
 	@Override
@@ -131,6 +131,11 @@ public class ChonGheNgoiController extends AbstractController {
 			this.setText(ghe.getHang() + "" + ghe.getDay());
 			this.setOnAction(event -> handleOnClick());
 			this.setFocusTraversable(false);
+			if(datVe.getBookingSuatChieu().getDsGheDaDat().contains(ghe)) {
+				this.setDisable(true);
+				this.setText("⨉");
+//				this.setStyle("-fx-background-color: #6b6b6b");
+			}
 		}
 
 		private void handleOnClick() {
@@ -141,7 +146,7 @@ public class ChonGheNgoiController extends AbstractController {
 
 		private void updateThongTinVe() {
 			ThongTinVeController controller = DatVeController.getInstance().getThongTinVeController();
-			controller.getTongTienLbl().setText(Helper.convertNumberFormat(datVe.getCurrentTotalPrice()));
+			controller.getTongTienLbl().setText(Helper.formatNumber(datVe.getCurrentTotalPrice()));
 			String bookingGheLbl = datVe.getBookingGhe().toString();
 			controller.getGheLbl().setText(bookingGheLbl.substring(1,bookingGheLbl.length()-1));
 		}

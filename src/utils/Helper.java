@@ -51,7 +51,7 @@ public class Helper {
 		}
 	}
 	
-	public static String convertNumberFormat(int number) {
+	public static String formatNumber(int number) {
 		DecimalFormat decimalFormat = new DecimalFormat("#,###");
 		return decimalFormat.format(number);
 	}

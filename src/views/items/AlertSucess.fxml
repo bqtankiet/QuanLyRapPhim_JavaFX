@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlertSuccessController">
+   <children>
+      <VBox alignment="CENTER" style="-fx-background-color: rgba(0, 0, 0, 0.5);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <AnchorPane prefWidth="600.0" style="-fx-background-radius: 15;" styleClass="alert-success" stylesheets="@alertStyle.css">
+                     <children>
+                        <VBox layoutX="15.0" layoutY="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: #4e9e4e; -fx-background-radius: 10;">
+                                 <children>
+                                    <Label fx:id="title" style="-fx-text-fill: white;" text="Thanh toán thành công" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="alert-success-title" />
+                                          <String fx:value="alert-success-label" />
+                                       </styleClass>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" layoutX="352.0" layoutY="5.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <AnchorPane prefWidth="570.0">
+                                 <VBox.margin>
+                                    <Insets top="15.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Label fx:id="message" alignment="CENTER" layoutX="125.0" layoutY="88.0" style="-fx-text-fill: #454545;" styleClass="alert-success-label" text="Bạn vừa thực hiện thanh toán thành công hóa đơn" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <HBox alignment="CENTER" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="closeBtn" mnemonicParsing="false" prefHeight="40.0" prefWidth="60.0" styleClass="alert-success-button" text="OK" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

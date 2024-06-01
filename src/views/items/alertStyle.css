@@ -1,0 +1,25 @@
+.alert-success{
+	-fx-background-color: white;
+}
+.alert-success-title{
+	
+}
+
+.alert-success-label{
+	-fx-font-size: 16.0px;
+	-fx-font-weight: bold;
+	
+}
+
+.alert-success-button{
+	-fx-font-size: 14.0;
+    -fx-font-weight: bold;
+    -fx-background-color: #201c2c;
+    -fx-text-fill: white;
+    -fx-background-radius: 15.0;
+}
+
+.alert-success-button:hover{
+	-fx-background-color: red;
+    -fx-cursor: hand;
+}

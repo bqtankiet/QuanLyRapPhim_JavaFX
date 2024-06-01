@@ -7,18 +7,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import models.HoaDon;
 import models.strategyPattern.ThanhToanStrategy;
 
 public class ThanhToanController extends AbstractController {
 	public static final String FXML = "/views/banve/ThanhToan.fxml";
-	
+
 	private static ThanhToanController instance;
-	
+
 	public static ThanhToanController getInstance() {
 		return instance;
 	}
 
 	private ThanhToanStrategy thanhToanStrategy;
+	
+	private HoaDon hoaDon;
 
 	@FXML
 	private Button huyDatVeBtn;
@@ -69,4 +72,12 @@ public class ThanhToanController extends AbstractController {
 		thanhToanStrategy.handleStrategy();
 	}
 
+	public void setHoaDon(HoaDon thanhToan) {
+		this.hoaDon = thanhToan;
+	}
+	
+	public HoaDon getHoaDon() {
+		return this.hoaDon;
+	}
+	
 }
