@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="788.0" stylesheets="@datveStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChonHinhThucThanhToanController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" styleClass="title" text="Chọn hình thức thanh toán" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </Label>
+      <VBox alignment="CENTER" layoutX="201.0" layoutY="85.0" prefHeight="200.0" prefWidth="100.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="cashPayment" alignment="CENTER_LEFT" layoutX="35.0" layoutY="228.0" spacing="10.0" styleClass="thanh-toan-item">
+               <children>
+                  <Label text="Thanh toán bằng tiền mặt" />
+                  <ImageView fx:id="cashImage" fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resource/images/cash-payment.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="vnpayPayment" alignment="CENTER_LEFT" styleClass="thanh-toan-item">
+               <children>
+                  <Label text="Thanh toán chuyển khoản " />
+                  <ImageView fx:id="vnpayImage" fitHeight="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resource/images/vnpay-payment.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

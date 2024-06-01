@@ -53,3 +53,43 @@
 	-fx-background-color: lightgray;
 	-fx-border-radius: 0.0;
 }
+
+.back-button{
+	-fx-font-size: 14.0;
+    -fx-font-weight: bold;
+    -fx-background-color: #201c2c;
+    -fx-text-fill: white;
+}
+
+.back-button:hover{
+    -fx-background-color: red;
+}
+
+.order-details{
+	-fx-border-color: gray;
+	-fx-border-radius: 10.0px;
+	-fx-background-radius: 10.0px;
+	-fx-font-size: 14.0px;
+}
+
+.order-details-button{
+	-fx-background-color: red;
+	-fx-font-size: 14.0px;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-pref-height: 40.0px;
+}
+
+.total-price{
+	-fx-font-size: 16.0px;
+	-fx-font-weight: bold;
+}
+
+.order-details-label{
+	-fx-font-size: 14.0px;
+}
+
+.order-details-code{
+	-fx-font-size: 14.0px;
+	-fx-text-fill: gray;
+}
