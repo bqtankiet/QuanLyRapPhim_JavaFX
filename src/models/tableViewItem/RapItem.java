@@ -17,12 +17,12 @@ public class RapItem {
 		this.rap = rap;
 		this.tenRap = new SimpleStringProperty(rap.getTenRap());
 		this.diaChi = new SimpleStringProperty(rap.getDiaChi());
-		this.soPhong = new SimpleStringProperty(rap.getSoPhong()+"");
+		this.soPhong = new SimpleStringProperty(rap.getSLPhong()+"");
 	}
 
 	public void themPhongChieu(PhongChieu phongChieu) {
 		this.rap.themPhongChieu(phongChieu);
-		this.soPhong.setValue(rap.getSoPhong()+"");
+		this.soPhong.setValue(rap.getSLPhong()+"");
 	}
 	
 	public Rap getRap() {

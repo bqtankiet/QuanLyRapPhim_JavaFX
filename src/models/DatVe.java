@@ -24,7 +24,7 @@ public class DatVe {
 	private List<Ghe> bookingGhe;
 	private LoaiKhachHang loaiKhachHang;
 	private int slVe;
-	private final VeXemPhimFactory veXemPhimFactory = new VeXemPhimFactoryImpl();
+	private final VeXemPhimFactory factory = new VeXemPhimFactoryImpl();
 
 	public DatVe(LichChieu lichChieu, Phim bookingPhim) {
 		this.bookingPhim = bookingPhim;
@@ -44,7 +44,7 @@ public class DatVe {
 	}
 
 	public VeXemPhim createVeXemPhim() {
-		return veXemPhimFactory.createVeXemPhim(this);
+		return factory.createVeXemPhim(this);
 	}
 	
 	public void chonGhe(Ghe ghe) {

@@ -53,7 +53,7 @@ public class Rap {
 		dsPhongChieu.add(phongChieu);
 	}
 
-	public int getSoPhong() {
+	public int getSLPhong() {
 		return this.dsPhongChieu.size();
 	}
 

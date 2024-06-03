@@ -36,6 +36,7 @@ public class HomepageController implements Initializable {
 		giaVeBtn.setOnAction(event -> giaVeBtnOnClick());
 		khuyenmaiBtn.setOnAction(event -> khuyenmaiBtnOnClick());
 		banveBtn.setOnAction(event -> banveBtnOnClick());
+		rapBtn.fire();
 	}
 
 	public void switchMainPane(String fxml) {

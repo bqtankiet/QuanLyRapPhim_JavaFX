@@ -19,7 +19,7 @@ public class ThanhToanController extends AbstractController {
 		return instance;
 	}
 
-	private ThanhToanStrategy thanhToanStrategy;
+	private ThanhToanStrategy strategy;
 	
 	private HoaDon hoaDon;
 
@@ -68,8 +68,8 @@ public class ThanhToanController extends AbstractController {
 	}
 
 	public void doStrategy(ThanhToanStrategy strategy) {
-		this.thanhToanStrategy = strategy;
-		thanhToanStrategy.handleStrategy();
+		this.strategy = strategy;
+		this.strategy.handleStrategy();
 	}
 
 	public void setHoaDon(HoaDon thanhToan) {
