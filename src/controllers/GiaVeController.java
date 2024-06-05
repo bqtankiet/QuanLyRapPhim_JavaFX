@@ -16,6 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import static models.enums.LoaiPhuThu.*;
 import storage.StorageGiaPhuThu;
 import storage.StorageGiaVe;
+import utils.AlertDialog;
 
 public class GiaVeController implements Initializable{
 	public static final String FXML = "/views/giave/giave.fxml";
@@ -69,6 +70,13 @@ public class GiaVeController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		initGiaVe();
 		initGiaPhuThu();
+		eventHandling();
+	}
+
+	private void eventHandling() {
+		saveBtn.setOnAction(event -> {
+			AlertDialog.showConfirmAlert("COMING SOON: Chức năng đang phát triển\nGiá vé hiện tại không thể chỉnh sửa");
+		});
 	}
 
 	private void initGiaPhuThu() {

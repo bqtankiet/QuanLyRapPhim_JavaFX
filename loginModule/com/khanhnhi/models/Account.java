@@ -1,4 +1,4 @@
-package com.khanhnhi.views;
+package com.khanhnhi.models;
 
 public class Account {
 	private Role role;
@@ -7,7 +7,6 @@ public class Account {
 
 	public Account(Role role, String username, String password) {
 		super();
-		this.role = role;
 		this.role = role;
 		this.username = username;
 		this.password = password;
@@ -36,12 +35,28 @@ public class Account {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public boolean isAdmin() {
 		return this.role == Role.ADMIN;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null || getClass() != obj.getClass()) {
+			return false;
+		}
+		Account other = (Account) obj;
+		return role == other.role && (username == null ? other.username == null : username.equals(other.username))
+				&& (password == null ? other.password == null : password.equals(other.password));
+	}
+
+	// Method to provide a string representation of the Account object
+	@Override
+	public String toString() {
+		return "Account{" + "role=" + role + ", username='" + username + '\'' + ", password='" + password + '\'' + '}';
+	}
 }
 
-enum Role {
-	ADMIN, USER
-}

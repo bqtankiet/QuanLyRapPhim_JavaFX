@@ -4,7 +4,8 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import com.khanhnhi.views.Server;
+import com.khanhnhi.models.Role;
+import com.khanhnhi.models.Server;
 import com.khanhnhi.views.SignupPanel;
 
 public class SignupController {
@@ -45,9 +46,13 @@ public class SignupController {
         String confirmPassword = new String(view.signupConfirmPassword.getPassword());
 
         if (isInputValid(username, password, confirmPassword)) {
-            Server.getInstance().getUserCredentials().put(username, password);
-            JOptionPane.showMessageDialog(view, "Đăng ký thành công!");
-            parent.switchToLoginPanel();
+//            Server.getInstance().getUserCredentials().put(username, password);
+        	if(Server.getInstance().signup(username, confirmPassword, Role.USER)) {
+        		JOptionPane.showMessageDialog(view, "Đăng ký thành công!");
+        		parent.switchToLoginPanel();
+        	} else {
+                JOptionPane.showMessageDialog(view, "Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác");
+        	}
         }
     }
 
@@ -56,11 +61,6 @@ public class SignupController {
 
         if (username.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(view, "Vui lòng nhập đầy đủ thông tin!");
-            return false;
-        }
-
-        if (userCredentials.containsKey(username)) {
-            JOptionPane.showMessageDialog(view, "Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác");
             return false;
         }
 
