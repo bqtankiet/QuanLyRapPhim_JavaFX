@@ -1,5 +1,5 @@
 package application;
-	
+
 import com.khanhnhi.main.LoginModule;
 
 import javafx.application.Application;
@@ -28,20 +28,17 @@ public class Main extends Application {
 			primaryStage.setMaximized(true);
 			primaryStage.setResizable(false);
 			new LoginModule(() -> {
-				Platform.runLater(()->{
+				Platform.runLater(() -> {
 					primaryStage.show();
 				});
 			});
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.err.println("Khong doc duoc file");
 			e.printStackTrace();
 		}
 	}
 
-	
 	public static void main(String[] args) {
-		new Thread(() -> {
-			launch(args);
-		}).start();
+		launch(args);
 	}
 }
