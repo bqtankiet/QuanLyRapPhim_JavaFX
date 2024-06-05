@@ -73,6 +73,7 @@ public class QuanLyVeController extends AbstractController {
 	}
 
 	private void handleNhanVeBtn() {
+		if(tableView.getSelectionModel().getSelectedItem() == null) return;
 		VeXemPhimItem item = tableView.getSelectionModel().getSelectedItem();
 		VeXemPhim ve = item.getVe();
 		if(ve.getTrangThai().equals("Đã nhận")) {
