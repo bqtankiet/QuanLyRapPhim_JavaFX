@@ -71,8 +71,8 @@ public class LoginController {
 					parent.handleLoginSuccess();
 				});
 			} else {
-				JOptionPane.showMessageDialog(view,
-						"Bạn đã đăng nhập thành công dưới vai trò USER\nThông báo: \"Giao diện USER hiện đang được phát triển\"");
+				JOptionPane.showMessageDialog(null,
+						"Bạn đã đăng nhập thành công dưới vai trò USER\nThông báo: \"Đây là phiên bản thử nghiệm ver 1.0, hiện đang phát triển giao diện USER\"");
 			}
 		} else {
 			JOptionPane.showMessageDialog(view, "Sai tên đăng nhập hoặc mật khẩu!");

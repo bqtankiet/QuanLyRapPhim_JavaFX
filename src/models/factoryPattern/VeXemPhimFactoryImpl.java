@@ -15,6 +15,7 @@ public class VeXemPhimFactoryImpl implements VeXemPhimFactory {
 		veXemPhim.setLoaiKhachHang(datVe.getLoaiKhachHang());
 		veXemPhim.setTongTien(datVe.getCurrentTotalPrice());
 		veXemPhim.setBookingGhe(datVe.getBookingGhe());
+		veXemPhim.setTrangThai("Chưa nhận");
 		return veXemPhim;
 	}
 	

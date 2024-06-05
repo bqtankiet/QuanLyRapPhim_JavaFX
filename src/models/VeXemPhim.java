@@ -10,6 +10,7 @@ public class VeXemPhim {
 	private List<Ghe> bookingGhe;
 	private LoaiKhachHang loaiKhachHang;
 	private int tongTien;
+	private String trangThai;
 
 	public VeXemPhim() {
 	}
@@ -36,6 +37,14 @@ public class VeXemPhim {
 
 	public void setBookingGhe(List<Ghe> bookingGhe) {
 		this.bookingGhe = bookingGhe;
+	}
+
+	public String getTrangThai() {
+		return trangThai;
+	}
+
+	public void setTrangThai(String trangThai) {
+		this.trangThai = trangThai;
 	}
 
 	public LoaiKhachHang getLoaiKhachHang() {

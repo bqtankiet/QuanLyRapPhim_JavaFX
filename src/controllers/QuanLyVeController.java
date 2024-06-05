@@ -1,19 +1,21 @@
 package controllers;
 
+import java.awt.Color;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import models.Rap;
 import models.VeXemPhim;
-import models.tableViewItem.PhimItem;
 import models.tableViewItem.VeXemPhimItem;
 import storage.StorageRap;
 import storage.StorageVeXemPhim;
@@ -55,18 +57,38 @@ public class QuanLyVeController extends AbstractController {
 
 	@FXML
 	private TableColumn<VeXemPhimItem, String> thoiGianColumn;
+	
+	@FXML
+	private TableColumn<VeXemPhimItem, String> trangThaiColumn;
 
 	@Override
 	public void eventHandling() {
 		nhanVeBtn.setOnAction(event -> handleNhanVeBtn());
+		chapNhanBtn.setOnAction(event -> handleChapNhanBtn());
+	}
+
+	private void handleChapNhanBtn() {
+		tableView.getItems().clear();
+		loadData();
 	}
 
 	private void handleNhanVeBtn() {
 		VeXemPhimItem item = tableView.getSelectionModel().getSelectedItem();
 		VeXemPhim ve = item.getVe();
+		if(ve.getTrangThai().equals("Đã nhận")) {
+			AlertDialog.showConfirmAlert("Nhận vé thất bại: Vé đã nhận");
+			return;
+		} else {
+			String today = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+			if(!ve.getSuatChieu().getLichChieu().getNgaychieu().equals(today)) {
+				AlertDialog.showConfirmAlert("Nhận vé thất bại: Chưa đến ngày chiếu");
+				return;
+			}
+		}
 		String currentDateTime = Helper.getCurrentDateTime();
-		AlertDialog.showConfirmAlert(String.format("Bạn đã nhận vé %s thành công \nvào lúc: %s", ve.getMaVe(),currentDateTime));
-		StorageVeXemPhim.data.remove(ve.getMaVe());
+		AlertDialog.showConfirmAlert(
+				String.format("Bạn đã nhận vé %s thành công \nvào lúc: %s", ve.getMaVe(), currentDateTime));
+		ve.setTrangThai("Đã nhận");
 		tableView.getItems().clear();
 		loadData();
 	}
@@ -81,8 +103,6 @@ public class QuanLyVeController extends AbstractController {
 
 	private void setupDatePicker() {
 		ngayChieuDatepicker.setValue(LocalDate.now());
-		ngayChieuDatepicker.setDisable(false);
-		ngayChieuDatepicker.setEditable(false);
 	}
 
 	private void setupRapChoicebox() {
@@ -104,6 +124,14 @@ public class QuanLyVeController extends AbstractController {
 	private void loadData() {
 		for (String maVe : StorageVeXemPhim.data.keySet()) {
 			VeXemPhim ve = StorageVeXemPhim.data.get(maVe);
+			if(!ve.getSuatChieu().getLichChieu().getRap().equals(getSelectedRap())) {
+				continue;
+			} else {
+				String ngayChieu = ve.getSuatChieu().getLichChieu().getNgaychieu();
+				String selectedNgayChieu = getSelectedDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+				System.out.println(ngayChieu + " = " + selectedNgayChieu);
+				if(!ngayChieu.equals(selectedNgayChieu)) continue;
+			}
 			VeXemPhimItem veItem = new VeXemPhimItem(ve);
 			tableView.getItems().add(veItem);
 		}
@@ -115,6 +143,38 @@ public class QuanLyVeController extends AbstractController {
 		phongColumn.setCellValueFactory(cellData -> cellData.getValue().getPhong());
 		phimColumn.setCellValueFactory(cellData -> cellData.getValue().getPhim());
 		gheDaDatColumn.setCellValueFactory(cellData -> cellData.getValue().getGheDaDat());
-		
+		trangThaiColumn.setCellValueFactory(cellData -> cellData.getValue().getTrangThai());
+		trangThaiColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (empty || item == null) {
+                    setText(null);
+                    setStyle(""); // Clear cell style
+                } else {
+                    // Set cell text
+                    setText(item);
+
+                    // Set cell text color to red if trangThai is "Received"
+                    if (item.equals("Đã nhận")) {
+                        setStyle("-fx-text-fill: red");
+                    } else {
+                        setStyle("");
+                    }
+                }
+            }
+        });
 	}
+	
+	public Rap getSelectedRap() {
+		Rap selectedRap = rapChoicebox.getSelectionModel().getSelectedItem();
+		return selectedRap;
+	}
+
+	public LocalDate getSelectedDate() {
+		LocalDate date = ngayChieuDatepicker.getValue();
+		return date;
+	}
+	
 }
