@@ -14,7 +14,7 @@ public class VeXemPhim {
 	public VeXemPhim() {
 	}
 
-	public String getMaVe() {
+	public String getMaVe() {	
 		return maVe;
 	}
 

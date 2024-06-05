@@ -12,12 +12,13 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import utils.AlertDialog;
 import utils.PaneController;
 
 public class HomepageController implements Initializable {
 	public static final String FXML = "/views/homepage/homepage.fxml";
 	@FXML
-	private Button rapBtn, phimBtn, suatChieuBtn, giaVeBtn, khuyenmaiBtn, banveBtn;
+	private Button rapBtn, phimBtn, suatChieuBtn, giaVeBtn, khuyenmaiBtn, banveBtn, qlVeBtn;
 
 	@FXML
 	private ScrollPane scrollpane;
@@ -37,6 +38,14 @@ public class HomepageController implements Initializable {
 		khuyenmaiBtn.setOnAction(event -> khuyenmaiBtnOnClick());
 		banveBtn.setOnAction(event -> banveBtnOnClick());
 		rapBtn.fire();
+		qlVeBtn.setOnAction(event -> qlVeBtnOnClick());
+	}
+
+	private void qlVeBtnOnClick() {
+//		AlertDialog.showConfirmAlert("COMING SOON: \"Chức năng đang phát triển\"");
+		// ---- test
+		setCurrentBtn(qlVeBtn);
+		PaneController.getInstance().replacePane(currentMainPane(), QuanLyVeController.FXML);
 	}
 
 	public void switchMainPane(String fxml) {
