@@ -1,6 +1,5 @@
 package controllers;
 
-import java.awt.Color;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -88,7 +87,7 @@ public class QuanLyVeController extends AbstractController {
 		}
 		String currentDateTime = Helper.getCurrentDateTime();
 		AlertDialog.showConfirmAlert(
-				String.format("Bạn đã nhận vé %s thành công \nvào lúc: %s", ve.getMaVe(), currentDateTime));
+				String.format("Bạn đã nhận vé \"%s\" thành công \nvào lúc: %s", ve.getMaVe(), currentDateTime));
 		ve.setTrangThai("Đã nhận");
 		tableView.getItems().clear();
 		loadData();
