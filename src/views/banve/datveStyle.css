@@ -1,0 +1,95 @@
+.suat-chieu-item {
+    -fx-background-color: lightgray;
+    -fx-font-size: 16.0px;
+    -fx-font-weight: bold;
+}
+
+.suat-chieu-item:hover {
+    -fx-background-color: gray;
+    -fx-font-size: 16.0px;
+    -fx-font-weight: bold;
+}
+
+.title {
+	-fx-font-size: 20.0px;
+    -fx-font-weight: bold;
+}
+
+.thanh-toan-item{
+	-fx-background-color: lightgray;
+    -fx-font-size: 20.0px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 15.0px;
+    -fx-pref-height: 65.0px;
+}
+
+.thanh-toan-item:hover {
+	-fx-background-color: #8f8fff;
+    -fx-font-size: 20.0px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.huy-dat-ve-button{
+    -fx-font-size: 14.0;
+    -fx-font-weight: bold;
+    -fx-background-color: #201c2c;
+    -fx-text-fill: white;
+    -fx-background-radius: 15.0;
+}
+
+.huy-dat-ve-button:hover {
+    -fx-background-color: red;
+    -fx-cursor: hand;
+}
+
+.decrease-increase-button:hover {
+	-fx-background-color: red;
+}
+
+.decrease-increase-button {
+	-fx-font-size: 30.0;
+	-fx-font-weight: bold;
+	-fx-background-color: lightgray;
+	-fx-border-radius: 0.0;
+}
+
+.back-button{
+	-fx-font-size: 14.0;
+    -fx-font-weight: bold;
+    -fx-background-color: #201c2c;
+    -fx-text-fill: white;
+}
+
+.back-button:hover{
+    -fx-background-color: red;
+}
+
+.order-details{
+	-fx-border-color: gray;
+	-fx-border-radius: 10.0px;
+	-fx-background-radius: 10.0px;
+	-fx-font-size: 14.0px;
+}
+
+.order-details-button{
+	-fx-background-color: red;
+	-fx-font-size: 14.0px;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-pref-height: 40.0px;
+}
+
+.total-price{
+	-fx-font-size: 16.0px;
+	-fx-font-weight: bold;
+}
+
+.order-details-label{
+	-fx-font-size: 14.0px;
+}
+
+.order-details-code{
+	-fx-font-size: 14.0px;
+	-fx-text-fill: gray;
+}

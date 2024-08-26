@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="root" prefHeight="500.0" prefWidth="788.0" stylesheets="@datveStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ThanhToanBangTienMatController">
+   <children>
+      <VBox layoutX="201.0" layoutY="85.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="15.0">
+               <children>
+                  <Button fx:id="backButton" mnemonicParsing="false" styleClass="back-button" text="◀ Trở lại" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="title" text="Thanh toán bằng tiền mặt">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="TOP_CENTER">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Label styleClass="order-details-label" text="Thông tin thanh toán" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <VBox alignment="TOP_CENTER" spacing="20.0" styleClass="order-details">
+                           <children>
+                              <AnchorPane prefWidth="300.0" styleClass="total-price">
+                                 <children>
+                                    <Label text="Tổng tiền" AnchorPane.leftAnchor="0.0" />
+                                    <HBox layoutX="51.0" spacing="5.0" AnchorPane.rightAnchor="0.0">
+                                       <children>
+                                          <Label fx:id="totalPriceLbl" text="200.000" />
+                                          <Label text="VND" />
+                                       </children>
+                                    </HBox>
+                                    <Separator prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <Label fx:id="orderCode" styleClass="order-details-code" text="33784fb3-34f8-4aa9-b29e-5caf2b50fa0f" />
+                              <VBox>
+                                 <children>
+                                    <Label text="Khách đưa" />
+                                    <TextField fx:id="khachDuaField" promptText="0" />
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </VBox>
+                              <VBox layoutX="26.0" layoutY="78.0">
+                                 <children>
+                                    <Label text="Trả khách" />
+                                    <TextField fx:id="traKhachField" editable="false" />
+                                 </children>
+                              </VBox>
+                              <Button fx:id="paymentButton" minHeight="-Infinity" mnemonicParsing="false" prefWidth="500.0" styleClass="order-details-button" text="Xác nhận thanh toán" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets top="25.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="35.0" left="15.0" right="15.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

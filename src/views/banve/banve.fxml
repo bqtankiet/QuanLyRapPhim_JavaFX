@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="502.0" prefWidth="822.0" style="-fx-background-color: white; -fx-background-radius: 15;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.BanVeController">
+   <children>
+      <ScrollPane fx:id="scrollpane" fitToWidth="true" prefHeight="502.0" prefWidth="807.0" style="-fx-background: rgb(255,255,255);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane fx:id="scrollAnchorPane" prefWidth="792.0">
+               <children>
+                  <VBox prefHeight="500.0" style="-fx-background-radius: 15;" stylesheets="@../phim/phim_style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane minHeight="-Infinity" prefHeight="50.0" style="-fx-background-color: #b2b7c2;">
+                           <children>
+                              <Label text="Bán vé" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" layoutX="352.0" layoutY="5.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="10.0" left="50.0" right="50.0" top="10.0" />
+                           </padding>
+                        </AnchorPane>
+                        <AnchorPane VBox.vgrow="ALWAYS">
+                           <children>
+                              <VBox layoutX="15.0" layoutY="15.0" spacing="20.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox spacing="50.0">
+                                       <children>
+                                          <HBox alignment="CENTER" spacing="10.0">
+                                             <children>
+                                                <Label text="Rạp" />
+                                                <ChoiceBox fx:id="rapChoicebox" prefWidth="250.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" spacing="10.0">
+                                             <children>
+                                                <Label text="Ngày chiếu" />
+                                                <DatePicker fx:id="ngayChieuDatepicker" prefWidth="250.0" />
+                                             </children>
+                                          </HBox>
+                                          <Button fx:id="chapNhanBtn" mnemonicParsing="false" text="Chấp nhận" />
+                                       </children>
+                                    </HBox>
+                                    <FlowPane fx:id="cardLayout" hgap="15.0" vgap="15.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <children>
+                                          <VBox fx:id="root" alignment="CENTER" style="-fx-background-color: #f0f0f0;">
+                                             <children>
+                                                <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+                                                   <children>
+                                                      <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="150.0">
+                                                         <children>
+                                                            <ImageView fx:id="imageview" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                                               <viewport>
+                                                                  <Rectangle2D />
+                                                               </viewport>
+                                                               <image>
+                                                                  <Image url="@../../../resource/images/latmat7.jpg" />
+                                                               </image>
+                                                            </ImageView>
+                                                         </children>
+                                                      </HBox>
+                                                   </children>
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </VBox>
+                                                <Label fx:id="tenphimLbl" alignment="CENTER" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="LẬT MẶT 7">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="thoiluongLbl" text="120 phút" />
+                                                <Label fx:id="theloaiLbl" text="Tâm lý, Tình cảm" />
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                           </padding>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

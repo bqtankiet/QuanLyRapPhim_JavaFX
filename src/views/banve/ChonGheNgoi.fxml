@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox minWidth="1000.0" style="-fx-background-color: lightgray;" stylesheets="@datveStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ChonGheNgoiController">
+   <children>
+      <AnchorPane>
+         <children>
+            <Label layoutY="7.0" style="-fx-font-weight: bold; -fx-font-size: 22; -fx-text-fill: #201c2c;" text="Bước 2: Chọn ghế" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="huyDatVeBtn" mnemonicParsing="false" prefWidth="100.0" styleClass="huy-dat-ve-button" text="Hủy đặt vé" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0" />
+            <HBox alignment="CENTER" layoutX="68.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="step1Btn" mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: #201c2c; -fx-text-fill: white;" text="01">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="100.0" stroke="#201c2c" strokeWidth="3.0" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: #201c2c; -fx-text-fill: white;" text="02">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Line endX="100.0" stroke="#a8a8a8" strokeWidth="3.0" />
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 50; -fx-background-color: transparent; -fx-border-color: a8a8a8; -fx-border-radius: 50; -fx-border-width: 3; -fx-text-fill: #201c2c;" text="03" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </AnchorPane>
+      <Separator>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Separator>
+      <AnchorPane fx:id="mainPane" style="-fx-background-color: #f4f4f4;" VBox.vgrow="ALWAYS">
+         <children>
+            <AnchorPane prefHeight="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <VBox alignment="CENTER" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                     <children>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <ScrollPane pannable="true">
+                                       <content>
+                                          <GridPane fx:id="gridpane" alignment="CENTER" hgap="8.0" vgap="8.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="40.0" />
+                                                <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="40.0" />
+                                                <ColumnConstraints minWidth="10.0" prefWidth="40.0" />
+                                             </columnConstraints>
+                                             <rowConstraints>
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" />
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" />
+                                                <RowConstraints minHeight="10.0" prefHeight="40.0" />
+                                             </rowConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" layoutY="113.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Label text="Giá vé:" />
+                        <HBox alignment="CENTER" spacing="5.0">
+                           <children>
+                              <Button fx:id="gheThuong" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dbdbdb;" />
+                              <HBox alignment="CENTER" spacing="2.0">
+                                 <children>
+                                    <Label layoutX="10.0" layoutY="14.0" text="Thường:" wrapText="true">
+                                       <padding>
+                                          <Insets right="2.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="priceTHUONG" text="85.000" wrapText="true" />
+                                    <Label text="₫" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="462.0" layoutY="10.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="gheVIP" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #ff5e5e;" />
+                              <HBox alignment="CENTER" spacing="2.0">
+                                 <children>
+                                    <Label text="VIP:" wrapText="true">
+                                       <padding>
+                                          <Insets right="2.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="priceVIP" text="85.000" />
+                                    <Label text="₫" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="509.0" layoutY="10.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="gheCouple" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #ff5985;" />
+                              <HBox alignment="CENTER" spacing="2.0">
+                                 <children>
+                                    <Label text="Couple:" wrapText="true">
+                                       <padding>
+                                          <Insets right="2.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label fx:id="priceCOUPLE" text="85.000" />
+                                    <Label text="₫" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="557.0" layoutY="10.0" spacing="5.0">
+                           <children>
+                              <Button fx:id="gheDangChon" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #005fc4;" />
+                              <HBox alignment="CENTER" spacing="2.0">
+                                 <children>
+                                    <Label text="Ghế đang chọn" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" layoutX="642.0" layoutY="10.0" spacing="5.0">
+                           <children>
+                              <HBox alignment="CENTER" spacing="2.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </HBox>
+                  <Button mnemonicParsing="false" styleClass="huy-dat-ve-button" text="Xác nhận đặt vé" visible="false" AnchorPane.bottomAnchor="50.0" AnchorPane.rightAnchor="50.0" fx:id="xacNhanDatVe">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

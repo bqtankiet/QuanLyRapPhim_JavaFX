@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SoDoGheNgoiController">
+   <children>
+      <HBox layoutX="20.0" layoutY="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane style="-fx-border-color: gray; -fx-border-radius: 10;">
+               <children>
+                  <VBox spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="TOP_CENTER" spacing="15.0">
+                           <children>
+                              <VBox>
+                                 <children>
+                                    <Label text="Tên Phòng" />
+                                    <TextField fx:id="tenPhongField" />
+                                 </children>
+                              </VBox>
+                              <VBox>
+                                 <children>
+                                    <Label text="Loại Phòng" />
+                                    <ChoiceBox fx:id="loaiPhongChoiceBox" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <HBox alignment="CENTER" spacing="10.0">
+                                 <children>
+                                    <VBox prefWidth="50.0">
+                                       <children>
+                                          <Label text="Số hàng" />
+                                          <TextField fx:id="soHangField" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefWidth="50.0">
+                                       <children>
+                                          <Label text="Số dãy" />
+                                          <TextField fx:id="soDayField" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Button fx:id="taoSoDoGheBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Tạo sơ đồ ghế ngồi" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="15.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Button fx:id="gheThuong" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #dbdbdb;" />
+                                    <Label text="Ghế Thường" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Button fx:id="gheVIP" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #ff5e5e;" />
+                                    <Label text="Ghế VIP" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" spacing="15.0">
+                                 <children>
+                                    <Button fx:id="gheCouple" minHeight="25.0" minWidth="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #ff5985;" />
+                                    <Label text="Ghế Couple" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Button fx:id="huyBtn" mnemonicParsing="false" text="Hủy" />
+                        <Button fx:id="luuBtn" mnemonicParsing="false" text="Lưu" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" layoutY="14.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <VBox alignment="CENTER">
+                           <children>
+                              <ScrollPane pannable="true">
+                                 <content>
+                                    <GridPane fx:id="gridpane" alignment="CENTER" hgap="8.0" vgap="8.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="40.0" />
+                                          <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="40.0" />
+                                          <ColumnConstraints minWidth="10.0" prefWidth="40.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="40.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="40.0" />
+                                          <RowConstraints minHeight="10.0" prefHeight="40.0" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="20.0" top="10.0" />
+               </HBox.margin>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</AnchorPane>
